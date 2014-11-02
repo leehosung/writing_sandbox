@@ -1,27 +1,39 @@
 from selenium import webdriver
+import unittest
 
-browser = webdriver.Firefox()
 
-# Hosung has heard about a cool new online writing training app.
-# He goes to check out its homepage
-browser.get('http://localhost:8000')
+class UserTest(unittest.TestCase):
 
-# He notices the page title and header mention "writing sandbox"
-assert 'writing sandbox' in browser.title
+    def setUp(self):
+        self.browser = webdriver.Firefox()
 
-# He logs into the service. 
+    def tearDown(self):
+        self.browser.quite()
 
-# He chooses a category to practice
+    def test_can_see_a_quiz(self):
+        # Hosung has heard about a cool new online writing training app.
+        # He goes to check out its homepage
+        browser.get('http://localhost:8000')
 
-# He sees a sentence in Korean
+        # He notices the page title and header mention "writing sandbox"
+        self.assertIn('writing sandbox', self.browser.title)
+        self.fail('Finish the test!')
 
-# He writes a sentence in English 
+        # He logs into the service. 
 
-# He types enters, and a sentence which Admin has registered in advance will show up
+        # He chooses a category to practice
 
-# He compares it with that he has written
+        # He sees a sentence in Korean
 
-# He goes on
+        # He writes a sentence in English 
 
-# Satisfied, he goes back to sleep 
-browser.quit()
+        # He types enters, and a sentence which Admin has registered in advance will show up
+
+        # He compares it with that he has written
+
+        # He goes on
+
+        # Satisfied, he goes back to sleep 
+
+if __name__ == '__main__':
+    unittest.main()
