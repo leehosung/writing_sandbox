@@ -39,12 +39,12 @@
 
 This is about phrases that learners are expected to learn. The phrases are categorized so that those that reflect the situations where Korean programmers write in English.
 
-Question and Answers
-Issues
-Commit message
-Comment
-Readme file
-Documentation on projects (description, tutorials, release notes)
-API manuals
-Specifications
+- Question and Answers
+- Issues
+- Commit message
+- Comment
+- Readme file
+- Documentation on projects (description, tutorials, release notes)
+- API manuals
+- Specifications
 
