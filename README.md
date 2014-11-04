@@ -35,12 +35,13 @@ He can order the registered sentences in a different way. Basic principle is tha
 ### Basic features - higher priority
 
 
-### Optional featuers - lower priority
+### Optional features - lower priority
 
 
 ## How to contribute
 
 ### As a programmer
+
 
 
 ### As a coach 
