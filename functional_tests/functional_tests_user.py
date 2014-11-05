@@ -8,15 +8,15 @@ class UserTest(unittest.TestCase):
         self.browser = webdriver.Firefox()
 
     def tearDown(self):
-        self.browser.quite()
+        self.browser.quit()
 
     def test_can_see_a_quiz(self):
         # Hosung has heard about a cool new online writing training app.
         # He goes to check out its homepage
-        browser.get('http://localhost:8000')
+        self.browser.get('http://localhost:5000')
 
         # He notices the page title and header mention "writing sandbox"
-        self.assertIn('writing sandbox', self.browser.title)
+        self.assertIn('Writing Sandbox', self.browser.title)
         self.fail('Finish the test!')
 
         # He logs into the service. 

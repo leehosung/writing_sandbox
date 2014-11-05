@@ -8,15 +8,15 @@ class AdminTest(unittest.TestCase):
         self.browser = webdriver.Firefox()
 
     def tearDown(self):
-        self.browser.quite()
+        self.browser.quit()
 
     def test_can_see_a_list(self):
         # Nasol is the admin of the Writing Sandbox
         # She goes to manage this service
-        self.browser.get('http://localhost:8000/admin')
+        self.browser.get('http://localhost:5000/admin')
 
-        # She notices the page title and header mention "writing sandbox"
-        self.assertIn('writing sandbox', self.browser.title)
+        # She notices the page title and header mention "page for admin"
+        self.assertIn('admin', self.browser.title)
         self.fail('Finish the test!')
 
         # She chooses a category to register sentences
