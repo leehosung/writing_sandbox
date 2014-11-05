@@ -12,6 +12,14 @@ from quiz.models import PlayerRecord
 
 class HomePageTest(TestCase):
 
+    def setUp(self):
+        phrase = Phrase()
+        phrase.url = "http://www.stackoverflow.com"
+        phrase.english = "I have a question"
+        phrase.korean = "질문이 있어요"
+        phrase.category = "QnA"
+        phrase.save()
+
     def test_root_url_resolves_to_home_page_view(self):
         found = resolve('/')
         self.assertEqual(found.func, home_page)
@@ -19,7 +27,11 @@ class HomePageTest(TestCase):
     def test_home_page_returns_correct_html(self):
         request = HttpRequest()
         response = home_page(request)
-        expected_html = render_to_string('home.html')
+        expected_html = render_to_string(
+            'home.html', {
+                'quiz': '질문이 있어요',
+                'answer': 'I have a question'
+            })
         self.assertEqual(response.content.decode('utf-8'), expected_html)
 
     def test_home_page_can_save_a_POST_request(self):
@@ -27,11 +39,24 @@ class HomePageTest(TestCase):
         request.method = 'POST'
         request.POST['user_text'] = 'I have question'
         response = home_page(request)
-        expected_html = render_to_string(
-            'home.html',
-            {'answer': 'I have question'}
-        )
-        self.assertEqual(response.content.decode('utf-8'), expected_html)
+
+        self.assertEqual(PlayerRecord.objects.count(), 1)
+        player_record = PlayerRecord.objects.first()
+        self.assertEqual(player_record.answer, "I have question")
+
+    def test_home_page_redirects_after_POST(self):
+        request = HttpRequest()
+        request.method = 'POST'
+        request.POST['user_text'] = 'I have question'
+        response = home_page(request)
+
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response['location'], '/')
+
+    def test_home_page_only_saves_items_when_necessary(self):
+        request = HttpRequest()
+        home_page(request)
+        self.assertEqual(PlayerRecord.objects.count(), 0)
 
 
 class PhraseModelTest(TestCase):
