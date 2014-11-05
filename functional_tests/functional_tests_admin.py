@@ -1,20 +1,32 @@
 from selenium import webdriver
+import unittest
 
-browser = webdriver.Firefox()
 
-# Nasol is the admin of the Writing Sandbox
-# She goes to manage this service
-browser.get('http://localhost:8000/admin')
+class AdminTest(unittest.TestCase):
 
-# She notices the page title and header mention "writing sandbox"
-assert 'writing sandbox' in browser.title
+    def setUp(self):
+        self.browser = webdriver.Firefox()
 
-# She chooses a category to register sentences
+    def tearDown(self):
+        self.browser.quite()
 
-# She types in a pair of English and Korean sentences
-# with its source URL, where she's found them
+    def test_can_see_a_list(self):
+        # Nasol is the admin of the Writing Sandbox
+        # She goes to manage this service
+        self.browser.get('http://localhost:8000/admin')
 
-# She can order the registered sentences in a different way. Basic principle is that easy ones come first.
+        # She notices the page title and header mention "writing sandbox"
+        self.assertIn('writing sandbox', self.browser.title)
+        self.fail('Finish the test!')
 
-# Satisfied, she goes back to sleep 
-browser.quit()
+        # She chooses a category to register sentences
+
+        # She types in a pair of English and Korean sentences
+        # with its source URL, where she's found them
+
+        # She can order the registered sentences in a different way. Basic principle is that easy ones come first.
+
+        # Satisfied, she goes back to sleep 
+
+if __name__ == '__main__':
+    unittest.main()
