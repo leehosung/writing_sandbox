@@ -55,3 +55,6 @@ target/
 
 # Django
 db.sqlite3
+
+# Vim
+*.swp

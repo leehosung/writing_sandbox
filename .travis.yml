@@ -1,0 +1,11 @@
+language: python
+python:
+  - "3.4"
+script: python3 manage.py test
+deploy:
+  provider: heroku
+  api_key:
+    secure: vlACdu6HghF44Ifka2ezPB0cVkdOcHAgdqwJYDQ75iBEo7SAm6CN+dbnW76IY51wSIx7bu9vl0G3uvSvCpo7PrzCiasf76xyRkJQATTIQAbsCvphRyCfNQLlnwMjPR1TJXdZdd0ana8r62ti+R/7I0TCzDFZPi5T+/1cFWf3PLo=
+  strategy: git
+  app: writing-sandbox
+  on: master
