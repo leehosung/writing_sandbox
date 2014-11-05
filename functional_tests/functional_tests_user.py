@@ -1,4 +1,5 @@
 from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
 import unittest
 
 
@@ -18,7 +19,7 @@ class UserTest(unittest.TestCase):
         # He notices the page title and header mention "Writing Sandbox"
         self.assertIn('Writing Sandbox', self.browser.title)
         header_text = self.browser.find_element_by_tag_name('h1').text
-        self.assertIn('Writing Sandbox', header_text)
+        self.assertIn('Quiz', header_text)
 
         # He logs into the service. 
 
