@@ -1,7 +1,7 @@
 language: python
 python:
   - "3.4"
-script: echo "do not test now"
+script: manage.py test
 deploy:
   provider: heroku
   api_key:
