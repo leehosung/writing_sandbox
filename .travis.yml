@@ -1,7 +1,7 @@
 language: python
 python:
   - "3.4"
-script: manage.py test
+script: python3 manage.py test
 deploy:
   provider: heroku
   api_key:
