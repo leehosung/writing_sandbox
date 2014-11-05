@@ -2,8 +2,18 @@
     <title>Writing Sandbox</title>
     <body>
         <h1>Quiz</h1>
-        <form method=POST>
-            <input id="id_input_english" placeholder="Write an English sentense" />
+        category : 
+        <select name="category">
+            <option value="QnA">Question And Answer</option>
+            <option value="Issue">Issue</option>
+        </select></br>
+        quiz : 질문이 있어요</br>
+        write your answer :
+        <form method="POST">
+            <input name="user_text" id="id_input_english" placeholder="Write an English sentense" />
+            <input type="submit" />
+            {% csrf_token %}
         </form>
+        answer : {{ answer }}
     </body>
 </html>
