@@ -14,11 +14,10 @@ def home_page(request):
         player_record.phrase = phrase
         player_record.answer = request.POST.get('user_text', '')
         player_record.save()
-        return redirect('/')
 
     response = render(request, 'home.html', {
         'quiz': phrase.korean,
-        'answer': phrase.english
+        'answer': phrase.english if request.method == 'POST' else ''
         })
     return response
 

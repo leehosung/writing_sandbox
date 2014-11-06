@@ -30,7 +30,6 @@ class HomePageTest(TestCase):
         expected_html = render_to_string(
             'home.html', {
                 'quiz': '질문이 있어요',
-                'answer': 'I have a question'
             })
         self.assertEqual(response.content.decode('utf-8'), expected_html)
 
@@ -43,15 +42,6 @@ class HomePageTest(TestCase):
         self.assertEqual(PlayerRecord.objects.count(), 1)
         player_record = PlayerRecord.objects.first()
         self.assertEqual(player_record.answer, "I have question")
-
-    def test_home_page_redirects_after_POST(self):
-        request = HttpRequest()
-        request.method = 'POST'
-        request.POST['user_text'] = 'I have question'
-        response = home_page(request)
-
-        self.assertEqual(response.status_code, 302)
-        self.assertEqual(response['location'], '/')
 
     def test_home_page_only_saves_items_when_necessary(self):
         request = HttpRequest()

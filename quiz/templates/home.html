@@ -1,19 +1,61 @@
 <html>
-    <title>Writing Sandbox</title>
-    <body>
-        <h1>Quiz</h1>
-        category : 
-        <select name="category">
-            <option value="QnA">Question And Answer</option>
-            <option value="Issue">Issue</option>
-        </select></br>
-        quiz : 질문이 있어요</br>
-        write your answer :
-        <form method="POST">
-            <input name="user_text" id="id_input_english" placeholder="Write an English sentense" />
-            <input type="submit" />
-            {% csrf_token %}
-        </form>
-        answer : {{ answer }}
-    </body>
+<head>
+  <title>Writing Sandbox</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class=container>
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand text-muted" href="#">Writing Sandbox</a>  
+      <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#">About Writing Sandbox</a>   </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- End Navbar -->
+  <div class="jumbotron">
+    <h2>Quiz</h2>
+    <div class="dropdown">
+      <button class="btn btn-default dropdown-toggle pull-right" type="button" id="dropdownMenu1" data-toggle="dropdown">
+      Category
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">QnA</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Issue</a></li>
+      </ul>
+    </div>
+      <p>quiz : {{ quiz }}</p>
+      <form method="POST">
+        <div class="form-group">
+          <p>write your answer :
+          <input name="user_text" id="id_input_english" class="form-control"/>
+        </div>
+        {% csrf_token %}
+      </form>
+      </p>
+      <p>answer : {{ answer }}</p>
+      <p><a class="btn btn-success btn-lg" href="/">Next</a></p>
+    </div>
+    <hr>
+    <div>
+      <p>&copy; 2014 Writing Sandbox. By Ho sung and Nasol</p>  
+    </div> 
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+</body>
 </html>
