@@ -1,6 +1,8 @@
 language: python
 python:
   - "3.4"
+#before_script:
+#  - "pep8 --exclude=migrations --ignore=E501,E225 src"
 script: python3 manage.py test
 deploy:
   provider: heroku
