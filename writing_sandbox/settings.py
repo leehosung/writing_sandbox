@@ -68,11 +68,15 @@ USE_L10N = True
 
 USE_TZ = True
 
-DATABASES = { 'default': {
-                'ENGINE': 'django.db.backends.sqlite3',
-                'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-              }
-            }
+if "DATABASE_URL" in os.environ:
+    import dj_database_url
+    DATABASES= {'default': dj_database_url.config()}
+else:
+    DATABASES = { 'default': {
+                    'ENGINE': 'django.db.backends.sqlite3',
+                    'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+                  }
+                }
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')

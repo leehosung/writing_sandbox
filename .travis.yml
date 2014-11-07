@@ -1,7 +1,8 @@
 language: python
 python:
   - "3.4"
-#before_script:
+before_script:
+  - python3 manage.py migrate --noinput
 #  - "pep8 --exclude=migrations --ignore=E501,E225 src"
 script: python3 manage.py test
 deploy:
@@ -11,6 +12,3 @@ deploy:
   strategy: git
   app: writing-sandbox
   on: master
-  after_deploy:
-    - cp writing_sandbox/local_settings.py.heroku writing_sandbox/local_settings.py
-    - python3 manage.py migrate --noinput
