@@ -16,7 +16,7 @@ def home_page(request):
         player_record.save()
 
     response = render(request, 'home.html', {
-        'quiz': phrase.korean,
+        'quiz': phrase.korean if phrase is not None else '',
         'answer': phrase.english if request.method == 'POST' else ''
         })
     return response

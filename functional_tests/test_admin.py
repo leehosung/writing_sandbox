@@ -1,11 +1,19 @@
+from django.test import LiveServerTestCase
+from django.conf import settings
 from selenium import webdriver
 import unittest
 
 
-class AdminTest(unittest.TestCase):
+class AdminTest(LiveServerTestCase):
+
+    def __init__(self, *args, **kwargs):
+        super(AdminTest, self).__init__(*args, **kwargs)
+        #if settings.DEBUG == False:
+        #    settings.DEBUG = True
 
     def setUp(self):
         self.browser = webdriver.Firefox()
+        self.browser.implicitly_wait(3)
 
     def tearDown(self):
         self.browser.quit()
@@ -13,11 +21,10 @@ class AdminTest(unittest.TestCase):
     def test_can_see_a_list(self):
         # Nasol is the admin of the Writing Sandbox
         # She goes to manage this service
-        self.browser.get('http://localhost:5000/admin')
+        self.browser.get(self.live_server_url + "/admin")
 
         # She notices the page title and header mention "page for admin"
         self.assertIn('admin', self.browser.title)
-        self.fail('Finish the test!')
 
         # She chooses a category to register sentences
 

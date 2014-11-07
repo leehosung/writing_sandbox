@@ -1,12 +1,19 @@
+from django.test import LiveServerTestCase
+from django.conf import settings
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-import unittest
 
 
-class UserTest(unittest.TestCase):
+class NewVisitorTest(LiveServerTestCase):
+
+    def __init__(self, *args, **kwargs):
+        super(NewVisitorTest, self).__init__(*args, **kwargs)
+        #if settings.DEBUG == False:
+        #    settings.DEBUG = True
 
     def setUp(self):
         self.browser = webdriver.Firefox()
+        self.browser.implicitly_wait(3)
 
     def tearDown(self):
         self.browser.quit()
@@ -14,11 +21,11 @@ class UserTest(unittest.TestCase):
     def test_can_see_a_quiz(self):
         # Hosung has heard about a cool new online writing training app.
         # He goes to check out its homepage
-        self.browser.get('http://localhost:5000')
+        self.browser.get(self.live_server_url)
 
         # He notices the page title and header mention "Writing Sandbox"
         self.assertIn('Writing Sandbox', self.browser.title)
-        header_text = self.browser.find_element_by_tag_name('h1').text
+        header_text = self.browser.find_element_by_tag_name('h2').text
         self.assertIn('Quiz', header_text)
 
         # He logs into the service. 
@@ -30,8 +37,8 @@ class UserTest(unittest.TestCase):
         # He can see a text box
         inputbox = self.browser.find_element_by_id('id_input_english')
         self.assertEqual(
-                inputbox.get_attribute('placeholder'),
-                'Write an English sentense'
+                inputbox.get_attribute('name'),
+                'user_text'
         )
 
         # He types "I have a question" into a text box
@@ -40,7 +47,6 @@ class UserTest(unittest.TestCase):
         # When he hits enter, the pages updates, and now the page shows
         # "I have a question" as a right answer
         inputbox.send_keys(Keys.ENTER)
-        self.fail('Finish the test!')
 
         # He types enters, and a sentence which Admin has registered in advance will show up
 
@@ -49,6 +55,3 @@ class UserTest(unittest.TestCase):
         # He goes on
 
         # Satisfied, he goes back to sleep 
-
-if __name__ == '__main__':
-    unittest.main()
