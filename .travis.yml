@@ -11,3 +11,6 @@ deploy:
   strategy: git
   app: writing-sandbox
   on: master
+  after_deploy:
+    - cp writing_sandbox/local_settings.py.heroku writing_sandbox/local_settings.py
+    - python3 manage.py syncdb
