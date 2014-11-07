@@ -1,9 +1,8 @@
 language: python
 python:
-  - "3.4"
+- '3.4'
 before_script:
-  - python3 manage.py migrate --noinput
-#  - "pep8 --exclude=migrations --ignore=E501,E225 src"
+- python3 manage.py migrate --noinput
 script: python3 manage.py test
 deploy:
   provider: heroku
@@ -12,3 +11,8 @@ deploy:
   strategy: git
   app: writing-sandbox
   on: master
+addons:
+  sauce_connect:
+    username: leclipse
+    access_key:
+      secure: Lu1xC2xxjw1oFzI9jsZbQ/2bmf78YPsr2O6motZKsbnNz/d9G5v4LoE+5cViMpNKx3VaIAeo0HpbJICWpjINJ9U+sHu26ncxnP2Ja99Q82QdR1bFbMc73zHULKFWutGqdE2RkSO+nFHRnZ3x7HEpmNmcm9yOyEXJ9Ndt5aTI9IY=
