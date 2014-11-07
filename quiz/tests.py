@@ -48,6 +48,17 @@ class HomePageTest(TestCase):
         home_page(request)
         self.assertEqual(PlayerRecord.objects.count(), 0)
 
+    def test_home_page_can_show_a_answer_after_user_input(self):
+        request = HttpRequest()
+        request.method = 'POST'
+        request.POST['user_text'] = 'I have question'
+        response = home_page(request)
+
+        expected_html = render_to_string("home.html", {
+            'quiz': '질문이 있어요',
+            'answer': 'I have a question'})
+        self.assertEqual(response.content.decode('utf-8'), expected_html)
+
 
 class PhraseModelTest(TestCase):
     
