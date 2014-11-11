@@ -19,7 +19,7 @@ class NewVisitorTest(LiveServerTestCase):
         #    settings.DEBUG = True
 
     def setUp(self):
-        print os.environ
+        # TODO : DRY
         if 'TRAVIS' in os.environ:
             capabilities = dict()
             capabilities["build"] = os.environ["TRAVIS_BUILD_NUMBER"]

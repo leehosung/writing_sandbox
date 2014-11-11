@@ -1,7 +1,13 @@
+import os
 from django.test import LiveServerTestCase
 from django.conf import settings
 from selenium import webdriver
-import unittest
+from selenium.webdriver.common.keys import Keys
+from selenium.common.exceptions import WebDriverException
+
+chromedriver = '%s/chromedriver' % os.path.dirname(os.path.abspath(__file__))
+if os.path.isfile(chromedriver):
+    os.environ['webdriver.chrome.driver'] = chromedriver
 
 
 class AdminTest(LiveServerTestCase):
@@ -12,7 +18,20 @@ class AdminTest(LiveServerTestCase):
         #    settings.DEBUG = True
 
     def setUp(self):
-        self.browser = webdriver.Firefox()
+        # TODO : DRY
+        if 'TRAVIS' in os.environ:
+            capabilities = dict()
+            capabilities["build"] = os.environ["TRAVIS_BUILD_NUMBER"]
+            capabilities["tags"] = [os.environ["TRAVIS_PYTHON_VERSION"], "CI"]
+            USERNAME = os.environ.get('SAUCE_USERNAME')
+            ACCESS_KEY = os.environ.get('SAUCE_ACCESS_KEY')
+            sauce_url = "localhost:4445"
+            self.brower = webdriver.Remote(desired_capabilities=capabilities, command_executor=sauce_url % (USERNAME, ACCESS_KEY))
+        else:
+            try:
+                self.browser = webdriver.Chrome(chromedriver)
+            except WebDriverException:
+                self.browser = webdriver.Firefox()
         self.browser.implicitly_wait(3)
 
     def tearDown(self):
