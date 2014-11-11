@@ -21,8 +21,8 @@ class NewVisitorTest(LiveServerTestCase):
     def setUp(self):
         if 'CI' in os.environ:
             desired_capabilities = {'name': self.id()}
-            USERNAME = os.environ.get('SAUCE_USERNAME', _U_)
-            ACCESS_KEY = os.environ.get('SAUCE_ACCESS_KEY', _K_)
+            USERNAME = os.environ.get('SAUCE_USERNAME')
+            ACCESS_KEY = os.environ.get('SAUCE_ACCESS_KEY')
             sauce_url = "http://%s:%s@ondemand.saucelabs.com:80/wd/hub"
             self.brower = webdriver.Remote(desired_capabilities=desired_capabilities, command_executor=sauce_url % (USERNAME, ACCESS_KEY))
         else:
