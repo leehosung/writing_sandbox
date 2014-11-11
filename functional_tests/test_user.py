@@ -19,12 +19,13 @@ class NewVisitorTest(LiveServerTestCase):
         #    settings.DEBUG = True
 
     def setUp(self):
-        if 'CI' in os.environ:
-            desired_capabilities = {'name': self.id()}
+        if 'TRAVIS' in os.environ:
+            capabilities["build"] = os.environ["TRAVIS_BUILD_NUMBER"]
+            capabilities["tags"] = [os.environ["TRAVIS_PYTHON_VERSION"], "CI"]
             USERNAME = os.environ.get('SAUCE_USERNAME')
             ACCESS_KEY = os.environ.get('SAUCE_ACCESS_KEY')
-            sauce_url = "http://%s:%s@ondemand.saucelabs.com:80/wd/hub"
-            self.brower = webdriver.Remote(desired_capabilities=desired_capabilities, command_executor=sauce_url % (USERNAME, ACCESS_KEY))
+            sauce_url = "localhost:4445"
+            self.brower = webdriver.Remote(desired_capabilities=capabilities, command_executor=sauce_url % (USERNAME, ACCESS_KEY))
         else:
             try:
                 self.browser = webdriver.Chrome(chromedriver)
