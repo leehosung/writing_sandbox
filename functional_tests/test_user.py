@@ -19,10 +19,17 @@ class NewVisitorTest(LiveServerTestCase):
         #    settings.DEBUG = True
 
     def setUp(self):
-        try:
-            self.browser = webdriver.Chrome(chromedriver)
-        except WebDriverException:
-            self.browser = webdriver.Firefox()
+        if 'CI' in os.environ:
+            desired_capabilities = {'name': self.id()}
+            USERNAME = os.environ.get('SAUCE_USERNAME', _U_)
+            ACCESS_KEY = os.environ.get('SAUCE_ACCESS_KEY', _K_)
+            sauce_url = "http://%s:%s@ondemand.saucelabs.com:80/wd/hub"
+            self.brower = webdriver.Remote(desired_capabilities=desired_capabilities, command_executor=sauce_url % (USERNAME, ACCESS_KEY))
+        else:
+            try:
+                self.browser = webdriver.Chrome(chromedriver)
+            except WebDriverException:
+                self.browser = webdriver.Firefox()
         self.browser.implicitly_wait(3)
 
     def tearDown(self):
