@@ -27,12 +27,13 @@ class AdminTest(LiveServerTestCase):
             ACCESS_KEY = os.environ.get('SAUCE_ACCESS_KEY')
             sauce_url = "http://%s:%s@localhost:4445"
             self.brower = webdriver.Remote(desired_capabilities=capabilities, command_executor=sauce_url % (USERNAME, ACCESS_KEY))
+            self.browser.implicitly_wait(30)
         else:
             try:
                 self.browser = webdriver.Chrome(chromedriver)
             except WebDriverException:
                 self.browser = webdriver.Firefox()
-        self.browser.implicitly_wait(3)
+            self.browser.implicitly_wait(3)
 
     def tearDown(self):
         self.browser.quit()
