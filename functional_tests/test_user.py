@@ -19,13 +19,12 @@ class NewVisitorTest(LiveServerTestCase):
 
     def setUp(self):
         if 'TRAVIS' in os.environ:
-            #TODO: Test name should be produced automatically
-            capabilities = {'platform': 'Mac OS X 10.9', 'browserName': 'chrome', 'version': '31', 'name': 'writing_sandbox.test_user.NewVisitorTest'}
+            capabilities = {'platform': 'Mac OS X 10.9', 'browserName': 'chrome', 'version': '31', 'name': self.id()}
             capabilities["build"] = os.environ["TRAVIS_BUILD_NUMBER"]
             capabilities["tags"] = [os.environ["TRAVIS_PYTHON_VERSION"], "CI"]
             USERNAME = os.environ.get('SAUCE_USERNAME')
             ACCESS_KEY = os.environ.get('SAUCE_ACCESS_KEY')
-            sauce_url = "http://%s:%s@localhost:4445"
+            sauce_url = "%s:%s@localhost:4445"
             self.brower = webdriver.Remote(desired_capabilities=capabilities, command_executor=sauce_url % (USERNAME, ACCESS_KEY))
             self.browser.implicitly_wait(30)
         else:
