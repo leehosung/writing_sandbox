@@ -19,7 +19,9 @@ class NewVisitorTest(LiveServerTestCase):
         #    settings.DEBUG = True
 
     def setUp(self):
+        print os.environ
         if 'TRAVIS' in os.environ:
+            capabilities = dict()
             capabilities["build"] = os.environ["TRAVIS_BUILD_NUMBER"]
             capabilities["tags"] = [os.environ["TRAVIS_PYTHON_VERSION"], "CI"]
             USERNAME = os.environ.get('SAUCE_USERNAME')
