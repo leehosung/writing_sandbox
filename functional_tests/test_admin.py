@@ -13,6 +13,7 @@ class AdminTest(LiveServerTestCase):
         pass
 
     def test_can_see_a_list(self):
+        pass
         # Nasol is the admin of the Writing Sandbox
         # She goes to manage this service
 

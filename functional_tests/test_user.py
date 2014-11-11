@@ -12,16 +12,15 @@ if os.path.isfile(chromedriver):
 
 class NewVisitorTest(LiveServerTestCase):
 
-
     def __init__(self, *args, **kwargs):
         super(NewVisitorTest, self).__init__(*args, **kwargs)
         #if settings.DEBUG == False:
         #    settings.DEBUG = True
 
     def setUp(self):
-        # TODO : DRY
         if 'TRAVIS' in os.environ:
-            capabilities = dict()
+            #TODO: Test name should be produced automatically
+            capabilities = {'platform': 'Mac OS X 10.9', 'browserName': 'chrome', 'version': '31', 'name': 'writing_sandbox.test_user.NewVisitorTest'}
             capabilities["build"] = os.environ["TRAVIS_BUILD_NUMBER"]
             capabilities["tags"] = [os.environ["TRAVIS_PYTHON_VERSION"], "CI"]
             USERNAME = os.environ.get('SAUCE_USERNAME')
