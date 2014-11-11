@@ -3,7 +3,7 @@ python:
 - '3.4'
 before_script:
 - python3 manage.py migrate --noinput
-script: python3 manage.py test
+script: .travis/run_test.sh
 deploy:
   provider: heroku
   api_key:

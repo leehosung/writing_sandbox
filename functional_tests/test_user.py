@@ -1,7 +1,13 @@
+import os
 from django.test import LiveServerTestCase
 from django.conf import settings
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from selenium.common.exceptions import WebDriverException
+
+chromedriver = '%s/chromedriver' % os.path.dirname(os.path.abspath(__file__))
+if os.path.isfile(chromedriver):
+    os.environ['webdriver.chrome.driver'] = chromedriver
 
 
 class NewVisitorTest(LiveServerTestCase):
@@ -12,8 +18,21 @@ class NewVisitorTest(LiveServerTestCase):
         #    settings.DEBUG = True
 
     def setUp(self):
-        self.browser = webdriver.Firefox()
-        self.browser.implicitly_wait(3)
+        if 'TRAVIS' in os.environ:
+            capabilities = {'platform': 'Mac OS X 10.9', 'browserName': 'chrome', 'version': '31', 'name': self.id()}
+            capabilities["build"] = os.environ["TRAVIS_BUILD_NUMBER"]
+            capabilities["tags"] = [os.environ["TRAVIS_PYTHON_VERSION"], "CI"]
+            USERNAME = os.environ.get('SAUCE_USERNAME')
+            ACCESS_KEY = os.environ.get('SAUCE_ACCESS_KEY')
+            sauce_url = "http://%s:%s@localhost:4445/wd/hub"
+            self.browser = webdriver.Remote(desired_capabilities=capabilities, command_executor=sauce_url % (USERNAME, ACCESS_KEY))
+            self.browser.implicitly_wait(30)
+        else:
+            try:
+                self.browser = webdriver.Chrome(chromedriver)
+            except WebDriverException:
+                self.browser = webdriver.Firefox()
+            self.browser.implicitly_wait(3)
 
     def tearDown(self):
         self.browser.quit()
@@ -21,7 +40,10 @@ class NewVisitorTest(LiveServerTestCase):
     def test_can_see_a_quiz(self):
         # Hosung has heard about a cool new online writing training app.
         # He goes to check out its homepage
-        self.browser.get(self.live_server_url)
+        if 'TRAVIS' in os.environ:
+            self.browser.get('http://writing-sandbox.herokuapp.com')
+        else:
+            self.browser.get(self.live_server_url)
 
         # He notices the page title and header mention "Writing Sandbox"
         self.assertIn('Writing Sandbox', self.browser.title)
