@@ -40,7 +40,10 @@ class NewVisitorTest(LiveServerTestCase):
     def test_can_see_a_quiz(self):
         # Hosung has heard about a cool new online writing training app.
         # He goes to check out its homepage
-        self.browser.get(self.live_server_url)
+        if 'TRAVIS' in os.environ:
+            self.browser.get('http://localhost')
+        else:
+            self.browser.get(self.live_server_url)
 
         # He notices the page title and header mention "Writing Sandbox"
         self.assertIn('Writing Sandbox', self.browser.title)
