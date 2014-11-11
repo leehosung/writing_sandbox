@@ -41,7 +41,7 @@ class NewVisitorTest(LiveServerTestCase):
         # Hosung has heard about a cool new online writing training app.
         # He goes to check out its homepage
         if 'TRAVIS' in os.environ:
-            self.browser.get('https://localhost:443')
+            self.browser.get('http://writing-sandbox.herokuapp.com')
         else:
             self.browser.get(self.live_server_url)
 
