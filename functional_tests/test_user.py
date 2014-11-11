@@ -12,6 +12,8 @@ if os.path.isfile(chromedriver):
 
 class NewVisitorTest(LiveServerTestCase):
 
+    fixtures = ['quiz/fixtures/functional_test.json']
+
     def __init__(self, *args, **kwargs):
         super(NewVisitorTest, self).__init__(*args, **kwargs)
         #if settings.DEBUG == False:
@@ -35,24 +37,35 @@ class NewVisitorTest(LiveServerTestCase):
             self.browser.implicitly_wait(3)
 
     def tearDown(self):
+        return
         self.browser.quit()
 
+    def check_for_row_in_list_table(self, row_text):
+        table = self.browser.find_element_by_id('id_list_table')
+        rows = table.find_elements_by_tag_name('tr')
+        self.assertIn(row_text, [row.text for row in rows])
+
     def test_can_see_a_quiz(self):
+        if 'TRAVIS' in os.environ:
+            server_url = 'http://writing-sandbox.herokuapp.com'
+        else:
+            server_url = self.live_server_url
         # Hosung has heard about a cool new online writing training app.
         # He goes to check out its homepage
-        if 'TRAVIS' in os.environ:
-            self.browser.get('http://writing-sandbox.herokuapp.com')
-        else:
-            self.browser.get(self.live_server_url)
+        self.browser.get(server_url)
 
         # He notices the page title and header mention "Writing Sandbox"
         self.assertIn('Writing Sandbox', self.browser.title)
         header_text = self.browser.find_element_by_tag_name('h2').text
-        self.assertIn('Quiz', header_text)
+        self.assertIn('Home', header_text)
 
         # He logs into the service. 
 
-        # He chooses a category to practice
+        # He chooses the QnA set to practice
+        self.check_for_row_in_list_table('1: QnA')
+        table = self.browser.find_element_by_id('id_list_table')
+        set_button = table.find_elements_by_tag_name('tr')[0]
+        set_button.click()
 
         # He sees a sentence in Korean
 
