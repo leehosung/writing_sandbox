@@ -26,7 +26,7 @@ class NewVisitorTest(LiveServerTestCase):
             capabilities["tags"] = [os.environ["TRAVIS_PYTHON_VERSION"], "CI"]
             USERNAME = os.environ.get('SAUCE_USERNAME')
             ACCESS_KEY = os.environ.get('SAUCE_ACCESS_KEY')
-            sauce_url = "localhost:4445"
+            sauce_url = "http://%s:%s@localhost:4445"
             self.brower = webdriver.Remote(desired_capabilities=capabilities, command_executor=sauce_url % (USERNAME, ACCESS_KEY))
         else:
             try:
