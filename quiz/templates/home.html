@@ -32,8 +32,7 @@
    <table id="id_list_table" class="table">
         {% for set in sets %}
             <tr>
-                <td><a href="/sets/{{ set.name }}/learn">{{ forloop.counter }}: {{ set.name }}</a>
-                </td>
+                <td><p><a class="btn" href="/sets/{{ set.name }}/learn">{{ forloop.counter }}: {{ set.name }}</a><p></td>
             </tr>
         {% endfor %}
     </table>

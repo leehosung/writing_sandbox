@@ -37,7 +37,6 @@ class NewVisitorTest(LiveServerTestCase):
             self.browser.implicitly_wait(3)
 
     def tearDown(self):
-        return
         self.browser.quit()
 
     def check_for_row_in_list_table(self, row_text):
@@ -64,8 +63,8 @@ class NewVisitorTest(LiveServerTestCase):
         # He chooses the QnA set to practice
         self.check_for_row_in_list_table('1: QnA')
         table = self.browser.find_element_by_id('id_list_table')
-        set_button = table.find_elements_by_tag_name('tr')[0]
-        set_button.click()
+        qna_button = self.browser.find_element_by_css_selector("tr:nth-child(1) > td:nth-child(1) > p > a")
+        qna_button.click()
 
         # He sees a sentence in Korean
 
