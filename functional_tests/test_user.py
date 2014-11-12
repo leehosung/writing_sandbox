@@ -20,7 +20,7 @@ class NewVisitorTest(LiveServerTestCase):
         #    settings.DEBUG = True
 
     def setUp(self):
-        if 'TRAVIS' in os.environ:
+        if 'SAUCE' in os.environ:
             capabilities = {'platform': 'Mac OS X 10.9', 'browserName': 'chrome', 'version': '31', 'name': self.id()}
             capabilities["build"] = os.environ["TRAVIS_BUILD_NUMBER"]
             capabilities["tags"] = [os.environ["TRAVIS_PYTHON_VERSION"], "CI"]
@@ -46,8 +46,8 @@ class NewVisitorTest(LiveServerTestCase):
         self.assertIn(row_text, [row.text for row in rows])
 
     def test_can_see_a_quiz(self):
-        if 'TRAVIS' in os.environ:
-            server_url = 'http://writing-sandbox.herokuapp.com'
+        if 'SAUCE' in os.environ:
+            server_url = os.environ["SAUCE_SERVER_URL"]
         else:
             server_url = self.live_server_url
         # Hosung has heard about a cool new online writing training app.

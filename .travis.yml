@@ -2,8 +2,13 @@ language: python
 python:
 - '3.4'
 before_script:
-- python3 manage.py migrate --noinput
-script: .travis/run_test.sh
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
+  - sleep 3 # give xvfb some time to start
+  - rackup  # start a Web server
+  - sleep 3 # give Web server some time to bind to sockets, etc
+  - python3 manage.py migrate --noinput
+script: .travis/script.sh
 deploy:
   provider: heroku
   api_key:
@@ -16,3 +21,4 @@ addons:
     username: leclipse
     access_key:
       secure: Lu1xC2xxjw1oFzI9jsZbQ/2bmf78YPsr2O6motZKsbnNz/d9G5v4LoE+5cViMpNKx3VaIAeo0HpbJICWpjINJ9U+sHu26ncxnP2Ja99Q82QdR1bFbMc73zHULKFWutGqdE2RkSO+nFHRnZ3x7HEpmNmcm9yOyEXJ9Ndt5aTI9IY=
+after_deploy: .travis/after_deploy.sh
