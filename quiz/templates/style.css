@@ -1,0 +1,25 @@
+/**/
+.title{
+	margin:0 0;
+	
+}
+.title span{
+	float:left;
+	display:inline-block;
+	background-color:#a29e90;
+	height:50px;
+	text-align:center;
+	font-size:18px;
+	color:#fff;
+	width:100px;
+	padding:17px 0 0 0;
+	margin:0 10px 0 0;
+}
+.title p{	
+	
+	background-color:#ecbd19;
+	height:50px;
+	font-size:14px;
+	color:#726f65;
+	padding:20px 0 0 10px;
+}
