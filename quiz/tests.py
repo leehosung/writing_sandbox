@@ -32,10 +32,16 @@ class LearnPageTest(TestCase):
 
     def setUp(self):
         qna_set = Set.objects.create(name="QnA")
-        phrase = Phrase.objects.create(
+        Phrase.objects.create(
             url="http://www.stackoverflow.com",
             english="I have a question",
             korean="질문이 있어요",
+            set=qna_set
+        )
+        Phrase.objects.create(
+            url="http://www.stackoverflow.com",
+            english="What is the command?",
+            korean="명령어가 무엇인가요?",
             set=qna_set
         )
 
@@ -47,7 +53,7 @@ class LearnPageTest(TestCase):
         response = self.client.get('/sets/qna/learn')
         self.assertTemplateUsed(response, 'learn.html')
 
-    def test_home_page_can_save_a_POST_request(self):
+    def test_learn_page_can_save_a_POST_request(self):
         self.client.post(
             '/sets/qna/learn',
             data={'user_text': 'I have question'}
@@ -57,16 +63,19 @@ class LearnPageTest(TestCase):
         player_record = PlayerRecord.objects.first()
         self.assertEqual(player_record.answer, "I have question")
 
-    def test_home_page_only_saves_items_when_necessary(self):
+    def test_learn_page_only_saves_items_when_necessary(self):
         response = self.client.get('/sets/qna/learn')
         self.assertEqual(PlayerRecord.objects.count(), 0)
 
-    def test_home_page_can_show_a_answer_after_user_input(self):
+    def test_learn_page_can_show_a_answer_after_user_input(self):
         response = self.client.post(
             '/sets/qna/learn',
             data={'user_text': 'I have question'}
         )
         self.assertContains(response, 'I have a question')
+
+    def test_learn_page_can_show_another_quiz(self):
+        pass
 
 
 class PhraseModelTest(TestCase):

@@ -37,7 +37,9 @@
         <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Issue</a></li>
       </ul>
     </div>
+      <div id="id_text_quiz">
       <p>quiz : {{ quiz }}</p>
+      </div>
       <form method="POST">
         <div class="form-group">
           <p>write your answer :
@@ -46,8 +48,10 @@
         {% csrf_token %}
       </form>
       </p>
+      <div id="id_text_answer">
       <p>answer : {{ answer }}</p>
-      <p><a class="btn btn-success btn-lg" href="/">Next</a></p>
+      </div>
+      <p><a id="id_btn_next" class="btn btn-success btn-lg" href="/">Next</a></p>
     </div>
     <hr>
     <div>

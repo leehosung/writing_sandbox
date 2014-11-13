@@ -67,6 +67,8 @@ class NewVisitorTest(LiveServerTestCase):
         qna_button.click()
 
         # He sees a sentence in Korean
+        quiz = self.browser.find_element_by_id('id_text_quiz').text
+        self.assertIn("질문이 있어요", quiz)
 
         # He can see a text box
         inputbox = self.browser.find_element_by_id('id_input_english')
@@ -81,11 +83,17 @@ class NewVisitorTest(LiveServerTestCase):
         # When he hits enter, the pages updates, and now the page shows
         # "I have a question" as a right answer
         inputbox.send_keys(Keys.ENTER)
-
-        # He types enters, and a sentence which Admin has registered in advance will show up
+        answer = self.browser.find_element_by_id('id_text_answer').text
+        self.assertIn("I have a question", answer)
 
         # He compares it with that he has written
+        # He clicks the "Next" button to go on
+        next_button = self.browser.find_element_by_id('id_text_answer')
+        next_button.click()
 
-        # He goes on
+        # He can see another Korean sentence
+        quiz = self.browser.find_element_by_id('id_text_quiz').text
+        self.assertIn("명령어가 무엇인가요?", quiz)
+
 
         # Satisfied, he goes back to sleep 
