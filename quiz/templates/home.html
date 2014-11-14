@@ -1,16 +1,17 @@
+{% load static %}
+
 <html>
 <head>
   <title>Writing Sandbox</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<!-- Latest compiled and minified CSS 
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">-->
-	<!-- Optional theme
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css"> -->
-	<link rel="stylesheet" href="bootstrap.css">
-	<link rel="stylesheet" href="bootstrap-theme.css">
-	<!-- Writing Sandbox style -->
-	<link rel="stylesheet" href="style.css">
-	
+  <!-- Latest compiled and minified CSS 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">-->
+  <!-- Optional theme
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css"> -->
+  <link rel="stylesheet" href="{% static "quiz/bootstrap.css" %}">
+  <link rel="stylesheet" href="{% static "quiz/bootstrap-theme.css" %}">
+  <!-- Writing Sandbox style -->
+  <link rel="stylesheet" href="{% static "quiz/style.css" %}">
 </head>
 <body>
   <!-- Navbar -->

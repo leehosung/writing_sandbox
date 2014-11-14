@@ -1,11 +1,16 @@
-<html>, response.text)
+{% load static %}
+<html>
 <head>
   <title>Writing Sandbox</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-  <!-- Optional theme -->
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+  <!-- Latest compiled and minified CSS 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">-->
+  <!-- Optional theme
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css"> -->
+  <link rel="stylesheet" href="{% static "quiz/bootstrap.css" %}">
+  <link rel="stylesheet" href="{% static "quiz/bootstrap-theme.css" %}">
+  <!-- Writing Sandbox style -->
+  <link rel="stylesheet" href="{% static "quiz/style.css" %}">
 </head>
 <body>
   <!-- Navbar -->
@@ -27,17 +32,7 @@
   <!-- End Navbar -->
   <div class="jumbotron">
     <h2>Learn</h2>
-    <div class="dropdown">
-      <button class="btn btn-default dropdown-toggle pull-right" type="button" id="dropdownMenu1" data-toggle="dropdown">
-      Category
-        <span class="caret"></span>
-      </button>
-      <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">QnA</a></li>
-        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Issue</a></li>
-      </ul>
-    </div>
-      <div id="id_text_quiz">
+    <div id="id_text_quiz">
       <p>quiz: {{ quiz }}</p>
       </div>
       <form method="POST">
@@ -49,7 +44,7 @@
       </form>
       </p>
       <div id="id_text_answer">
-      <p>answer: {{ answer }}</p>
+        <p>answer: {{ answer }}</p>
       </div>
       <p><a id="id_btn_next" class="btn btn-success btn-lg" href="/">Next</a></p>
     </div>
