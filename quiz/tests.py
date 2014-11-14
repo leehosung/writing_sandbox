@@ -56,7 +56,10 @@ class LearnPageTest(TestCase):
     def test_learn_page_can_save_a_POST_request(self):
         self.client.post(
             '/sets/qna/learn',
-            data={'user_text': 'I have question'}
+            data={
+                'q_idx': '1',
+                'user_text': 'I have question'
+                }
         )
 
         self.assertEqual(PlayerRecord.objects.count(), 1)
@@ -67,19 +70,15 @@ class LearnPageTest(TestCase):
         response = self.client.get('/sets/qna/learn')
         self.assertEqual(PlayerRecord.objects.count(), 0)
 
-    def test_learn_page_can_show_a_answer_after_user_input(self):
-        response = self.client.post(
-            '/sets/qna/learn',
-            data={'user_text': 'I have question'}
-        )
-        self.assertContains(response, 'I have a question')
-
     def test_learn_page_can_show_next_quiz(self):
         response = self.client.post(
             '/sets/qna/learn',
-            data={'user_text': 'I have question'}
+            data={
+                'q_idx': 1,
+                'user_text': 'I have question'
+            }
         )
-        pass
+        self.assertContains(response, "What is the command?")
 
 
 class PhraseModelTest(TestCase):

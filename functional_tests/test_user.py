@@ -4,6 +4,7 @@ from django.conf import settings
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import WebDriverException
+from selenium.common.exceptions import NoSuchElementException
 
 chromedriver = '%s/chromedriver' % os.path.dirname(os.path.abspath(__file__))
 if os.path.isfile(chromedriver):
@@ -83,17 +84,20 @@ class NewVisitorTest(LiveServerTestCase):
         # When he hits enter, the pages updates, and now the page shows
         # "I have a question" as a right answer
         inputbox.send_keys(Keys.ENTER)
-        answer = self.browser.find_element_by_id('id_text_answer').text
+        answer = self.browser.find_element_by_id('id_confirm_answer').text
         self.assertIn("I have a question", answer)
 
         # He compares it with that he has written
         # He clicks the "Next" button to go on
-        next_button = self.browser.find_element_by_id('id_text_answer')
+        next_button = self.browser.find_element_by_id('id_btn_next')
         next_button.click()
 
         # He can see another Korean sentence
-        #quiz = self.browser.find_element_by_id('id_text_quiz').text
-        #self.assertIn("명령어가 무엇인가요?", quiz)
+        quiz = self.browser.find_element_by_id('id_text_quiz').text
+        self.assertIn("명령어가 무엇인가요?", quiz)
 
+        # This is a last quiestion. He can not see the next button
+        with self.assertRaises(NoSuchElementException) as e:
+            self.browser.find_element_by_id('id_btn_next')
 
         # Satisfied, he goes back to sleep 

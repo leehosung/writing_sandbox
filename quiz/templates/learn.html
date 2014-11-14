@@ -46,16 +46,16 @@
   <div id="confirm-div">
     <form id="post-form" method="POST">
       <div class="form-group">
-        <input type="hidden" name="user_text" id="id_confirm_english" class="form-control"/>
         <input name="q_idx" id="q_idx" type="hidden" value="{{ q_idx }}">
-        <p id="confirm-p"></p>
-        <p><a id="id_btn_next" class="btn btn-success btn-lg" href="/">Next</a></p>
+        <p id="id_confirm_english"></p>
+        <p id="id_confirm_answer">answer : {{ answer }}</p>
+        {% if has_next_phrase %}
+        <input name="btn_next" type="submit" id="id_btn_next" class="btn btn-success btn-lg" href="/">
+        {% endif %}
       </div>
       {% csrf_token %}
     </form>
   </div>
-  </p>
-  <p><a id="id_btn_next" class="btn btn-success btn-lg" href="/">Next</a></p>
 </div>
 <hr>
 <div>
@@ -74,8 +74,7 @@ $("#input-form").submit(function(e) {
     e.preventDefault();
     $("#input-div").hide();
     $("#confirm-div").show();
-    $("#id_confirm_english").val($("#id_input_english").val());
-    $("#confirm-p").text("answer: " + $("#id_input_english").val());
+    $("#id_confirm_english").text($("#id_input_english").val());
     });
 </script>
 </body>
