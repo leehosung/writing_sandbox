@@ -1,0 +1,50 @@
+/*
+<link href='http://fonts.googleapis.com/css?family=Play:400,700' rel='stylesheet' type='text/css'>
+*/
+
+
+.title{
+	margin:0 0;
+	
+}
+.title span{
+	float:left;
+	display:inline-block;
+	background-color:#a29e90;
+	height:50px;
+	text-align:center;
+	font-size:18px;
+	color:#fff;
+	width:100px;
+	padding:17px 0 0 0;
+	margin:0 10px 0 0;
+}
+.title p{		
+	background-color:#ecbd19;
+	height:50px;
+	font-size:14px;
+	color:#726f65;
+	padding:20px 0 0 10px;
+	margin:0 0;
+}
+.conbox{
+	margin:0 0;
+	padding:20px;
+}
+h3.tq{
+	margin:0 0;
+	color:#a29e90;
+	font-size:20px;
+	font-weight:bold;
+}
+.footer{
+	
+	margin:0 0;
+	padding:12px 0 5px 15px;	
+	background-color:#e3e3e1;
+	border-top:1px solid #dedacc;
+	color:#9f9f9e;
+}
+.footer p{
+	font-size:12px;
+}
