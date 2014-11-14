@@ -10,7 +10,6 @@
 	<link rel="stylesheet" href="bootstrap-theme.css">
 	<!-- Writing Sandbox style -->
 	<link rel="stylesheet" href="style.css">
-	
 </head>
 <body>
   <!-- Navbar -->
@@ -31,26 +30,34 @@
   </div>
   <!-- End Navbar -->
   <div class="jumbotron">
-    <h2 class="title">
-		<span>Home</span>
-		<p>Welcome to Writing sandbox</p> 
-	</h2>    
-   <div class="conbox">
-	   <table id="id_list_table" class="table">
-			{% for set in sets %}
-				<tr>
-					<td><p><a class="btn" href="/sets/{{ set.name }}/learn">{{ forloop.counter }}: {{ set.name }}</a><p></td>
-				</tr>
-			{% endfor %}
-		</table>
-	</div> 
-  </div>
+	<h2 class="title">
+		<span>Learn</span>
+		<p>Try to answer the quiz</p> 
+	</h2> 
+	<div class="conbox">		
+		<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+			<li role="presentation"><a role="menuitem" tabindex="-1" href="#">QnA</a></li>
+			<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Issue</a></li>
+		</ul>	
+		<h3 class="tq">Quiz</h3>
+		<p>{{ quiz }}</p>
+		<form method="POST">
+			<div class="form-group">
+				<p>write your answer :</p>
+				<input name="user_text" id="id_input_english" class="form-control"/>
+			</div>
+			{% csrf_token %}
+		</form>		
+		<p>answer : {{ answer }}</p>
+		<p><a class="btn btn-success btn-lg" href="/">Next</a></p>
+	</div>   
+ </div>
   <div class="footer">
-    <p>&copy; 2014 Writing Sandbox. By Hosung and Nasol</p>  
-  </div> 
+      <p>&copy; 2014 Writing Sandbox. By Ho sung and Nasol</p>  
+    </div> 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <!-- Latest compiled and minified JavaScript -->
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 </body>
 </html>
