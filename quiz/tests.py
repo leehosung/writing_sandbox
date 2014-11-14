@@ -74,7 +74,11 @@ class LearnPageTest(TestCase):
         )
         self.assertContains(response, 'I have a question')
 
-    def test_learn_page_can_show_another_quiz(self):
+    def test_learn_page_can_show_next_quiz(self):
+        response = self.client.post(
+            '/sets/qna/learn',
+            data={'user_text': 'I have question'}
+        )
         pass
 
 

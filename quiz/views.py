@@ -22,7 +22,7 @@ def learn_page(request):
 
     response = render(request, 'learn.html', {
         'quiz': phrase.korean if phrase is not None else '',
-        'answer': phrase.english if request.method == 'POST' else ''
+        'answer': phrase.english if request.method == 'POST' else '',
+        'q_idx': phrase.id
         })
     return response
-

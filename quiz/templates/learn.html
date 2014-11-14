@@ -34,18 +34,27 @@
     <h2>Learn</h2>
     <div id="id_text_quiz">
       <p>quiz: {{ quiz }}</p>
-      </div>
-      <form method="POST">
+    </div>
+    <div id="input-div">
+      <form id="input-form">
         <div class="form-group">
           <p>write your answer :
-          <input name="user_text" id="id_input_english" class="form-control"/>
+          <input type="text" name="user_text" id="id_input_english" class="form-control"/>
+        </div>
+      </form>
+    </div>
+    <div id="confirm-div">
+      <form id="post-form" method="POST">
+        <div class="form-group">
+          <input type="hidden" name="user_text" id="id_confirm_english" class="form-control"/>
+          <input name="q_idx" id="q_idx" type="hidden" value="{{ q_idx }}">
+          <p id="confirm-p"></p>
+          <p><a id="id_btn_next" class="btn btn-success btn-lg" href="/">Next</a></p>
         </div>
         {% csrf_token %}
       </form>
+    </div>
       </p>
-      <div id="id_text_answer">
-        <p>answer: {{ answer }}</p>
-      </div>
       <p><a id="id_btn_next" class="btn btn-success btn-lg" href="/">Next</a></p>
     </div>
     <hr>
@@ -56,5 +65,18 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <!-- Latest compiled and minified JavaScript -->
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script>
+$(function() {
+    $("#input-div").show();
+    $("#confirm-div").hide();
+});
+$("#input-form").submit(function(e) {
+    e.preventDefault();
+    $("#input-div").hide();
+    $("#confirm-div").show();
+    $("#id_confirm_english").val($("#id_input_english").val());
+    $("#confirm-p").text("answer: " + $("#id_input_english").val());
+});
+</script>
 </body>
 </html>
