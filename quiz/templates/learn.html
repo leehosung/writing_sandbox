@@ -1,66 +1,66 @@
 {% load static %}
 <html>
 <head>
-  <title>Writing Sandbox</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Latest compiled and minified CSS 
+<title>Writing Sandbox</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Latest compiled and minified CSS 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">-->
-  <!-- Optional theme
+<!-- Optional theme
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css"> -->
-  <link rel="stylesheet" href="{% static "quiz/bootstrap.css" %}">
-  <link rel="stylesheet" href="{% static "quiz/bootstrap-theme.css" %}">
-  <!-- Writing Sandbox style -->
-  <link rel="stylesheet" href="{% static "quiz/style.css" %}">
+<link rel="stylesheet" href="{% static "quiz/bootstrap.css" %}">
+<link rel="stylesheet" href="{% static "quiz/bootstrap-theme.css" %}">
+<!-- Writing Sandbox style -->
+<link rel="stylesheet" href="{% static "quiz/style.css" %}">
 </head>
 <body>
-  <!-- Navbar -->
-  <div class="navbar navbar-inverse navbar-fixed-top">
-    <div class=container>
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand text-muted" href="#">Writing Sandbox</a>  
-      <div class="collapse navbar-collapse">
-        <ul class="nav navbar-nav navbar-right">
-          <li class="active"><a href="#">Home</a></li>
-          <li><a href="#">About Writing Sandbox</a>   </li>
-        </ul>
-      </div>
+<!-- Navbar -->
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class=container>
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand text-muted" href="#">Writing Sandbox</a>  
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">About Writing Sandbox</a>   </li>
+      </ul>
     </div>
   </div>
-  <!-- End Navbar -->
-  <div class="jumbotron">
-    <h2>Learn</h2>
-    <div id="id_text_quiz">
-      <p>quiz: {{ quiz }}</p>
-    </div>
-    <div id="input-div">
-      <form id="input-form">
-        <div class="form-group">
-          <p>write your answer :
-          <input type="text" name="user_text" id="id_input_english" class="form-control"/>
-        </div>
-      </form>
-    </div>
-    <div id="confirm-div">
-      <form id="post-form" method="POST">
-        <div class="form-group">
-          <input type="hidden" name="user_text" id="id_confirm_english" class="form-control"/>
-          <input name="q_idx" id="q_idx" type="hidden" value="{{ q_idx }}">
-          <p id="confirm-p"></p>
-          <p><a id="id_btn_next" class="btn btn-success btn-lg" href="/">Next</a></p>
-        </div>
-        {% csrf_token %}
-      </form>
-    </div>
-      </p>
-      <p><a id="id_btn_next" class="btn btn-success btn-lg" href="/">Next</a></p>
-    </div>
-    <hr>
-    <div>
-      <p>&copy; 2014 Writing Sandbox. By Ho sung and Nasol</p>  
-    </div> 
+</div>
+<!-- End Navbar -->
+<div class="jumbotron">
+  <h2>Learn</h2>
+  <div id="id_text_quiz">
+    <p>quiz: {{ quiz }}</p>
+  </div>
+  <div id="input-div">
+    <form id="input-form">
+      <div class="form-group">
+        <p>write your answer :
+        <input type="text" name="user_text" id="id_input_english" class="form-control"/>
+      </div>
+    </form>
+  </div>
+  <div id="confirm-div">
+    <form id="post-form" method="POST">
+      <div class="form-group">
+        <input type="hidden" name="user_text" id="id_confirm_english" class="form-control"/>
+        <input name="q_idx" id="q_idx" type="hidden" value="{{ q_idx }}">
+        <p id="confirm-p"></p>
+        <p><a id="id_btn_next" class="btn btn-success btn-lg" href="/">Next</a></p>
+      </div>
+      {% csrf_token %}
+    </form>
+  </div>
+  </p>
+  <p><a id="id_btn_next" class="btn btn-success btn-lg" href="/">Next</a></p>
+</div>
+<hr>
+<div>
+  <p>&copy; 2014 Writing Sandbox. By Ho sung and Nasol</p>  
+</div> 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <!-- Latest compiled and minified JavaScript -->
@@ -69,14 +69,14 @@
 $(function() {
     $("#input-div").show();
     $("#confirm-div").hide();
-});
+    });
 $("#input-form").submit(function(e) {
     e.preventDefault();
     $("#input-div").hide();
     $("#confirm-div").show();
     $("#id_confirm_english").val($("#id_input_english").val());
     $("#confirm-p").text("answer: " + $("#id_input_english").val());
-});
+    });
 </script>
 </body>
 </html>
