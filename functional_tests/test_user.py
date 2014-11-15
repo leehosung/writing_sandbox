@@ -3,12 +3,7 @@ from django.test import LiveServerTestCase
 # from django.conf import settings
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-from selenium.common.exceptions import WebDriverException
 from selenium.common.exceptions import NoSuchElementException
-
-chromedriver = '%s/chromedriver' % os.path.dirname(os.path.abspath(__file__))
-if os.path.isfile(chromedriver):
-    os.environ['webdriver.chrome.driver'] = chromedriver
 
 
 class NewVisitorTest(LiveServerTestCase):
@@ -35,10 +30,7 @@ class NewVisitorTest(LiveServerTestCase):
                 command_executor=sauce_url % (USERNAME, ACCESS_KEY))
             self.browser.implicitly_wait(30)
         else:
-            try:
-                self.browser = webdriver.Chrome(chromedriver)
-            except WebDriverException:
-                self.browser = webdriver.Firefox()
+            self.browser = webdriver.Firefox()
             self.browser.implicitly_wait(3)
 
     def tearDown(self):
