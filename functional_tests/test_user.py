@@ -72,11 +72,11 @@ class NewVisitorTest(LiveServerTestCase):
         qna_button.click()
 
         # He sees a sentence in Korean
-        quiz = self.browser.find_element_by_id('id_text_quiz').text
+        quiz = self.browser.find_element_by_id('text_quiz').text
         self.assertIn("질문이 있어요", quiz)
 
         # He can see a text box
-        inputbox = self.browser.find_element_by_id('id_input_english')
+        inputbox = self.browser.find_element_by_id('input_text_english')
         self.assertEqual(
             inputbox.get_attribute('name'),
             'user_text'
@@ -88,20 +88,20 @@ class NewVisitorTest(LiveServerTestCase):
         # When he hits enter, the pages updates, and now the page shows
         # "I have a question" as a right answer
         inputbox.send_keys(Keys.ENTER)
-        answer = self.browser.find_element_by_id('id_confirm_answer').text
+        answer = self.browser.find_element_by_id('text_correct').text
         self.assertIn("I have a question", answer)
 
         # He compares it with that he has written
         # He clicks the "Next" button to go on
-        next_button = self.browser.find_element_by_id('id_btn_next')
+        next_button = self.browser.find_element_by_id('btn_next')
         next_button.click()
 
         # He can see another Korean sentence
-        quiz = self.browser.find_element_by_id('id_text_quiz').text
+        quiz = self.browser.find_element_by_id('text_quiz').text
         self.assertIn("명령어가 무엇인가요?", quiz)
 
         # This is a last quiestion. He can not see the next button
         with self.assertRaises(NoSuchElementException):
-            self.browser.find_element_by_id('id_btn_next')
+            self.browser.find_element_by_id('btn_next')
 
         # Satisfied, he goes back to sleep

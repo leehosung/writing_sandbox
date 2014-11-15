@@ -13,7 +13,7 @@ def home_page(request):
     return response
 
 
-def learn_page(request):
+def learn_page(request, category=''):
     if request.method == 'POST':
         q_idx = int(request.POST.get('q_idx'))
         phrase = Phrase.objects.get(id=q_idx+1)
@@ -32,6 +32,7 @@ def learn_page(request):
         has_next_phrase = True
 
     response = render(request, 'learn.html', {
+        'category': category,
         'quiz': phrase.korean,
         'answer': phrase.english,
         'q_idx': phrase.id,

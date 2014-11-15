@@ -20,7 +20,7 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand text-muted" href="#">Writing Sandbox</a>  
+    <a class="navbar-brand text-muted" href="/">Writing Sandbox</a>  
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
         <li class="active"><a href="#">Home</a></li>
@@ -31,9 +31,12 @@
 </div>
 <!-- End Navbar -->
 <div class="jumbotron">
-  <h2>Learn</h2>
+  <h2 class="title">
+    <span>Learn</span>
+    <p>{{ category }}</p> 
+  </h2>
   <div id="input_div">
-    <p>{{ quiz }}</p>
+    <p id="text_quiz">{{ quiz }}</p>
     <form id="input_form">
       <div class="form-group">
         <input id="input_text_english"  type="text" name="user_text" class="form-control"/>
@@ -45,10 +48,10 @@
       <div class="form-group">
         <p>Prompt : {{ quiz }}</p>
         <p id="text_you_said"></p>
-        <p>Correct : {{ answer }}</p>
+        <p id="text_correct">Correct : {{ answer }}</p>
         <input id="q_idx" name="q_idx" type="hidden" value="{{ q_idx }}">
         {% if has_next_phrase %}
-        <input id="btn_next" name="btn_next" type="submit" class="btn btn-success btn-lg" href="/">
+        <input id="btn_next" name="btn_next" type="submit" class="btn btn-success btn-lg" value="Next" href="/">
         {% endif %}
       </div>
       {% csrf_token %}
