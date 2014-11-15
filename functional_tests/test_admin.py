@@ -24,10 +24,7 @@ class AdminTest(LiveServerTestCase):
         # She types in a pair of English and Korean sentences
         # with its source URL, where she's found them
 
-        # She can order the registered sentences in a different way. Basic principle is that easy ones come first.
+        # She can order the registered sentences in a different way.
+        # Basic principle is that easy ones come first.
 
-        # Satisfied, she goes back to sleep 
-
-
-if __name__ == '__main__':
-    unittest.main()
+        # Satisfied, she goes back to sleep

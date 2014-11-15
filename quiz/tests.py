@@ -1,9 +1,6 @@
 # coding=utf-8
 from django.core.urlresolvers import resolve
 from django.test import TestCase
-from django.http import HttpRequest
-from django.template.loader import render_to_string
-from django.shortcuts import render
 
 from quiz.views import home_page
 from quiz.views import learn_page
@@ -67,7 +64,7 @@ class LearnPageTest(TestCase):
         self.assertEqual(player_record.answer, "I have question")
 
     def test_learn_page_only_saves_items_when_necessary(self):
-        response = self.client.get('/sets/qna/learn')
+        self.client.get('/sets/qna/learn')
         self.assertEqual(PlayerRecord.objects.count(), 0)
 
     def test_learn_page_can_show_next_quiz(self):
@@ -82,7 +79,7 @@ class LearnPageTest(TestCase):
 
 
 class PhraseModelTest(TestCase):
-    
+
     def test_saving_and_retreiving_phrases(self):
         qna_set = Set()
         qna_set.name = "QnA"
@@ -101,6 +98,7 @@ class PhraseModelTest(TestCase):
         saved_phrase = saved_phrases[0]
 
         self.assertEqual(saved_phrase.english, "I have a question")
+
 
 class PlayerRecordTest(TestCase):
 

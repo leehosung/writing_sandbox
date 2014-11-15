@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Phrase(models.Model):
     url = models.TextField(default='')
     english = models.TextField(default='')

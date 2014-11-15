@@ -1,16 +1,17 @@
 # coding=utf-8
-from django.shortcuts import redirect, render
-from django.http import HttpResponse
+from django.shortcuts import render
 from django.core.exceptions import ObjectDoesNotExist
 
 from quiz.models import Phrase
 from quiz.models import PlayerRecord
 from quiz.models import Set
 
+
 def home_page(request):
     sets = Set.objects.all()
     response = render(request, 'home.html', {'sets': sets})
     return response
+
 
 def learn_page(request):
     if request.method == 'POST':

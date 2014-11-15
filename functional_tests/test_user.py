@@ -1,6 +1,6 @@
 import os
 from django.test import LiveServerTestCase
-from django.conf import settings
+# from django.conf import settings
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import WebDriverException
@@ -17,18 +17,22 @@ class NewVisitorTest(LiveServerTestCase):
 
     def __init__(self, *args, **kwargs):
         super(NewVisitorTest, self).__init__(*args, **kwargs)
-        #if settings.DEBUG == False:
+        # if settings.DEBUG == False:
         #    settings.DEBUG = True
 
     def setUp(self):
         if 'SAUCE' in os.environ:
-            capabilities = {'platform': 'Mac OS X 10.9', 'browserName': 'chrome', 'version': '31', 'name': self.id()}
+            capabilities = {'platform': 'Mac OS X 10.9',
+                            'browserName': 'chrome',
+                            'version': '31', 'name': self.id()}
             capabilities["build"] = os.environ["TRAVIS_BUILD_NUMBER"]
             capabilities["tags"] = [os.environ["TRAVIS_PYTHON_VERSION"], "CI"]
             USERNAME = os.environ.get('SAUCE_USERNAME')
             ACCESS_KEY = os.environ.get('SAUCE_ACCESS_KEY')
             sauce_url = "http://%s:%s@localhost:4445/wd/hub"
-            self.browser = webdriver.Remote(desired_capabilities=capabilities, command_executor=sauce_url % (USERNAME, ACCESS_KEY))
+            self.browser = webdriver.Remote(
+                desired_capabilities=capabilities,
+                command_executor=sauce_url % (USERNAME, ACCESS_KEY))
             self.browser.implicitly_wait(30)
         else:
             try:
@@ -59,12 +63,12 @@ class NewVisitorTest(LiveServerTestCase):
         header_text = self.browser.find_element_by_tag_name('h2').text
         self.assertIn('Home', header_text)
 
-        # He logs into the service. 
+        # He logs into the service.
 
         # He chooses the QnA set to practice
         self.check_for_row_in_list_table('1: QnA')
-        table = self.browser.find_element_by_id('id_list_table')
-        qna_button = self.browser.find_element_by_css_selector("tr:nth-child(1) > td:nth-child(1) > p > a")
+        qna_button = self.browser.find_element_by_css_selector(
+            "tr:nth-child(1) > td:nth-child(1) > p > a")
         qna_button.click()
 
         # He sees a sentence in Korean
@@ -74,8 +78,8 @@ class NewVisitorTest(LiveServerTestCase):
         # He can see a text box
         inputbox = self.browser.find_element_by_id('id_input_english')
         self.assertEqual(
-                inputbox.get_attribute('name'),
-                'user_text'
+            inputbox.get_attribute('name'),
+            'user_text'
         )
 
         # He types "I have a question" into a text box
@@ -97,7 +101,7 @@ class NewVisitorTest(LiveServerTestCase):
         self.assertIn("명령어가 무엇인가요?", quiz)
 
         # This is a last quiestion. He can not see the next button
-        with self.assertRaises(NoSuchElementException) as e:
+        with self.assertRaises(NoSuchElementException):
             self.browser.find_element_by_id('id_btn_next')
 
-        # Satisfied, he goes back to sleep 
+        # Satisfied, he goes back to sleep
