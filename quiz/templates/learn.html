@@ -32,25 +32,23 @@
 <!-- End Navbar -->
 <div class="jumbotron">
   <h2>Learn</h2>
-  <div id="id_text_quiz">
-    <p>quiz: {{ quiz }}</p>
-  </div>
-  <div id="input-div">
-    <form id="input-form">
+  <div id="input_div">
+    <p>{{ quiz }}</p>
+    <form id="input_form">
       <div class="form-group">
-        <p>write your answer :
-        <input type="text" name="user_text" id="id_input_english" class="form-control"/>
+        <input id="input_text_english"  type="text" name="user_text" class="form-control"/>
       </div>
     </form>
   </div>
-  <div id="confirm-div">
-    <form id="post-form" method="POST">
+  <div id="confirm_div">
+    <form id="post_form" method="POST">
       <div class="form-group">
-        <input name="q_idx" id="q_idx" type="hidden" value="{{ q_idx }}">
-        <p id="id_confirm_english"></p>
-        <p id="id_confirm_answer">answer : {{ answer }}</p>
+        <p>Prompt : {{ quiz }}</p>
+        <p id="text_you_said"></p>
+        <p>Correct : {{ answer }}</p>
+        <input id="q_idx" name="q_idx" type="hidden" value="{{ q_idx }}">
         {% if has_next_phrase %}
-        <input name="btn_next" type="submit" id="id_btn_next" class="btn btn-success btn-lg" href="/">
+        <input id="btn_next" name="btn_next" type="submit" class="btn btn-success btn-lg" href="/">
         {% endif %}
       </div>
       {% csrf_token %}
@@ -67,14 +65,14 @@
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script>
 $(function() {
-    $("#input-div").show();
-    $("#confirm-div").hide();
+    $("#input_div").show();
+    $("#confirm_div").hide();
     });
-$("#input-form").submit(function(e) {
+$("#input_form").submit(function(e) {
     e.preventDefault();
-    $("#input-div").hide();
-    $("#confirm-div").show();
-    $("#id_confirm_english").text($("#id_input_english").val());
+    $("#input_div").hide();
+    $("#confirm_div").show();
+    $("#text_you_said").text("You said : " + $("#input_text_english").val());
     });
 </script>
 </body>
