@@ -117,7 +117,8 @@ class NewVisitorTest(LiveServerTestCase):
         self.assertIn("사용자는 그들의 소셜 계정으로 로그인 할 수 있습니다.", quiz)
 
         # He want to quit quiz so click the brand logo
-        brand_button = self.browser.find_element_by_link_text('Writing Sandbox')
+        brand_button = self.browser.\
+            find_element_by_link_text('Writing Sandbox')
         brand_button.click()
 
         # Satisfied, he goes back to sleep
