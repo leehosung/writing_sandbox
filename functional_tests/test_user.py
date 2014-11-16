@@ -8,7 +8,7 @@ from selenium.common.exceptions import NoSuchElementException
 
 class NewVisitorTest(LiveServerTestCase):
 
-    fixtures = ['quiz/fixtures/functional_test.json']
+    fixtures = ['quiz/fixtures/test.json']
 
     def __init__(self, *args, **kwargs):
         super(NewVisitorTest, self).__init__(*args, **kwargs)
@@ -92,11 +92,32 @@ class NewVisitorTest(LiveServerTestCase):
         quiz = self.browser.find_element_by_id('text_quiz').text
         self.assertIn("명령어가 무엇인가요?", quiz)
 
-        # This is a last quiestion. He can not see the next button
+        # He types "What is the command?" into a text box
+        inputbox = self.browser.find_element_by_id('input_text_english')
+        inputbox.send_keys('What is the command?')
+
+        # When he hits enter, the pages updates
+        inputbox.send_keys(Keys.ENTER)
+
+        # This is a last question. He can not see the next button
         with self.assertRaises(NoSuchElementException):
             self.browser.find_element_by_id('btn_next')
-        # He can see a "Home" button to select an another category
-        home_button = self.browser.find_element_by_link_text('Home')
+
+        # He can see a "Home" button to select an another set
+        home_button = self.browser.find_element_by_link_text('Go to home')
         home_button.click()
+
+        # He select a 'Issue' set to learn it
+        self.check_for_row_in_list_table('2: Issue')
+        issue_button = self.browser.find_element_by_link_text("2: Issue")
+        issue_button.click()
+
+        # He sees a sentence in Korean
+        quiz = self.browser.find_element_by_id('text_quiz').text
+        self.assertIn("사용자는 그들의 소셜 계정으로 로그인 할 수 있습니다.", quiz)
+
+        # He want to quit quiz so click the brand logo
+        brand_button = self.browser.find_element_by_link_text('Writing Sandbox')
+        brand_button.click()
 
         # Satisfied, he goes back to sleep
