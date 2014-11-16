@@ -52,6 +52,8 @@
         <input id="q_idx" name="q_idx" type="hidden" value="{{ q_idx }}">
         {% if has_next_phrase %}
         <input id="btn_next" name="btn_next" type="submit" class="btn btn-success btn-lg" value="Next" href="/">
+        {% else %}
+        <a id="btn_home" name="btn_home" class="btn btn-success btn-lg" value="Home" href="/">Home</a>
         {% endif %}
       </div>
       {% csrf_token %}

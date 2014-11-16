@@ -95,5 +95,8 @@ class NewVisitorTest(LiveServerTestCase):
         # This is a last quiestion. He can not see the next button
         with self.assertRaises(NoSuchElementException):
             self.browser.find_element_by_id('btn_next')
+        # He can see a "Home" button to select an another category
+        home_button = self.browser.find_element_by_link_text('Home')
+        home_button.click()
 
         # Satisfied, he goes back to sleep
