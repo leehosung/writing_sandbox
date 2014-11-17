@@ -11,7 +11,11 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.AlterField(
+        migrations.RemoveField(
+            model_name='phrase',
+            name='set'
+        ),
+        migrations.AddField(
             model_name='phrase',
             name='set',
             field=models.ForeignKey(to='quiz.Set'),
