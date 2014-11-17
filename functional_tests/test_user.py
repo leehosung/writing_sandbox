@@ -35,11 +35,6 @@ class NewVisitorTest(LiveServerTestCase):
     def tearDown(self):
         self.browser.quit()
 
-    def check_for_row_in_list_table(self, row_text):
-        table = self.browser.find_element_by_id('id_list_table')
-        rows = table.find_elements_by_tag_name('tr')
-        self.assertIn(row_text, [row.text for row in rows])
-
     def test_can_see_a_quiz(self):
         if 'SAUCE' in os.environ:
             server_url = os.environ["SAUCE_SERVER_URL"]
@@ -57,9 +52,7 @@ class NewVisitorTest(LiveServerTestCase):
         # He logs into the service.
 
         # He chooses the QnA set to practice
-        self.check_for_row_in_list_table('1: QnA')
-        qna_button = self.browser.find_element_by_css_selector(
-            "tr:nth-child(1) > td:nth-child(1) > p > a")
+        qna_button = self.browser.find_element_by_link_text("1: QnA")
         qna_button.click()
 
         # He sees a sentence in Korean
@@ -104,7 +97,6 @@ class NewVisitorTest(LiveServerTestCase):
         home_button.click()
 
         # He select the 'Issue' set to learn it
-        self.check_for_row_in_list_table('2: Issue')
         issue_button = self.browser.find_element_by_link_text("2: Issue")
         issue_button.click()
 
