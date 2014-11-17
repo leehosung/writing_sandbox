@@ -16,7 +16,7 @@ deploy:
   app: writing-sandbox
   on: master
   run:
-    - python3 manage.py migrate --noinput
+    - python manage.py migrate --noinput
 addons:
   sauce_connect:
     username: leclipse
