@@ -100,10 +100,7 @@ class NewVisitorTest(LiveServerTestCase):
         inputbox.send_keys(Keys.ENTER)
 
         # This is the last question. He can not see the next button
-        with self.assertRaises(NoSuchElementException):
-            self.browser.find_element_by_id('btn_next')
-
-        # He can see the "Home" button to select an another set
+        # He can see the "Go to home" button to select an another set
         home_button = self.browser.find_element_by_link_text('Go to home')
         home_button.click()
 
