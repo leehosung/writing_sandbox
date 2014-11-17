@@ -99,20 +99,20 @@ class NewVisitorTest(LiveServerTestCase):
         # When he hits enter, the pages updates
         inputbox.send_keys(Keys.ENTER)
 
-        # This is a last question. He can not see the next button
+        # This is the last question. He can not see the next button
         with self.assertRaises(NoSuchElementException):
             self.browser.find_element_by_id('btn_next')
 
-        # He can see a "Home" button to select an another set
+        # He can see the "Home" button to select an another set
         home_button = self.browser.find_element_by_link_text('Go to home')
         home_button.click()
 
-        # He select a 'Issue' set to learn it
+        # He select the 'Issue' set to learn it
         self.check_for_row_in_list_table('2: Issue')
         issue_button = self.browser.find_element_by_link_text("2: Issue")
         issue_button.click()
 
-        # He sees a sentence in Korean
+        # He sees the sentence in Korean
         quiz = self.browser.find_element_by_id('text_quiz').text
         self.assertIn("사용자는 그들의 소셜 계정으로 로그인 할 수 있습니다.", quiz)
 
