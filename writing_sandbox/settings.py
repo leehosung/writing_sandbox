@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
@@ -36,6 +35,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'raven.contrib.django.raven_compat',
     'quiz',
 )
 
@@ -53,8 +53,6 @@ ROOT_URLCONF = 'writing_sandbox.urls'
 
 WSGI_APPLICATION = 'writing_sandbox.wsgi.application'
 
-
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
@@ -70,13 +68,14 @@ USE_TZ = True
 
 if "DATABASE_URL" in os.environ:
     import dj_database_url
-    DATABASES= {'default': dj_database_url.config()}
+    DATABASES = {'default': dj_database_url.config()}
 else:
-    DATABASES = { 'default': {
-                    'ENGINE': 'django.db.backends.sqlite3',
-                    'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-                  }
-                }
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
@@ -93,7 +92,10 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
-try:
-    from writing_sandbox.local_settings import *
-except ImportError:
-    pass
+# Sentry
+# Set your DSN value
+SENTRY_ID = '037240776a414879963a39ee53d654da'
+SENTRY_PW = '9ce108552e164487987f89da0a5800e2'
+RAVEN_CONFIG = {
+    'dsn': 'https://%s:%s@app.getsentry.com/33337' % (SENTRY_ID, SENTRY_PW)
+    }

@@ -5,7 +5,7 @@ from quiz.models import Set
 
 
 class PhraseAdmin(admin.ModelAdmin):
-    pass
+    list_display = ['english']
 
 
 class PlayerRecordAdmin(admin.ModelAdmin):
@@ -13,7 +13,7 @@ class PlayerRecordAdmin(admin.ModelAdmin):
 
 
 class SetAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('__str__',)
 
 
 admin.site.register(Phrase, PhraseAdmin)

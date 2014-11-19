@@ -1,9 +1,6 @@
 # coding=utf-8
 from django.core.urlresolvers import resolve
 from django.test import TestCase
-from django.http import HttpRequest
-from django.template.loader import render_to_string
-from django.shortcuts import render
 
 from quiz.views import home_page
 from quiz.views import learn_page
@@ -13,6 +10,8 @@ from quiz.models import Set
 
 
 class HomePageTest(TestCase):
+
+    fixtures = ['quiz/fixtures/test.json']
 
     def test_root_url_resolves_to_home_page_view(self):
         found = resolve('/')
@@ -30,47 +29,46 @@ class HomePageTest(TestCase):
 
 class LearnPageTest(TestCase):
 
-    def setUp(self):
-        qna_set = Set.objects.create(name="QnA")
-        phrase = Phrase.objects.create(
-            url="http://www.stackoverflow.com",
-            english="I have a question",
-            korean="질문이 있어요",
-            set=qna_set
-        )
+    fixtures = ['quiz/fixtures/test.json']
 
     def test_root_url_resolves_to_learn_page_view(self):
-        found = resolve('/sets/qna/learn')
+        found = resolve('/sets/QnA/learn')
         self.assertEqual(found.func, learn_page)
 
     def test_uses_learm_template(self):
-        response = self.client.get('/sets/qna/learn')
+        response = self.client.get('/sets/QnA/learn')
         self.assertTemplateUsed(response, 'learn.html')
 
-    def test_home_page_can_save_a_POST_request(self):
+    def test_learn_page_can_save_a_POST_request(self):
         self.client.post(
-            '/sets/qna/learn',
-            data={'user_text': 'I have question'}
+            '/sets/QnA/learn',
+            data={
+                'q_idx': '1',
+                'user_text': 'I have question'
+                }
         )
 
         self.assertEqual(PlayerRecord.objects.count(), 1)
         player_record = PlayerRecord.objects.first()
         self.assertEqual(player_record.answer, "I have question")
 
-    def test_home_page_only_saves_items_when_necessary(self):
-        response = self.client.get('/sets/qna/learn')
+    def test_learn_page_only_saves_items_when_necessary(self):
+        self.client.get('/sets/QnA/learn')
         self.assertEqual(PlayerRecord.objects.count(), 0)
 
-    def test_home_page_can_show_a_answer_after_user_input(self):
+    def test_learn_page_can_show_next_quiz(self):
         response = self.client.post(
-            '/sets/qna/learn',
-            data={'user_text': 'I have question'}
+            '/sets/QnA/learn',
+            data={
+                'q_idx': 1,
+                'user_text': 'I have question'
+            }
         )
-        self.assertContains(response, 'I have a question')
+        self.assertContains(response, "What is the command?")
 
 
 class PhraseModelTest(TestCase):
-    
+
     def test_saving_and_retreiving_phrases(self):
         qna_set = Set()
         qna_set.name = "QnA"
@@ -80,7 +78,7 @@ class PhraseModelTest(TestCase):
         first_phrase.url = "http://www.stackoverflow.com"
         first_phrase.english = "I have a question"
         first_phrase.korean = "질문이 있어요"
-        first_phrase.set_ = qna_set
+        first_phrase.set = qna_set
         first_phrase.save()
 
         saved_phrases = Phrase.objects.all()
@@ -89,6 +87,7 @@ class PhraseModelTest(TestCase):
         saved_phrase = saved_phrases[0]
 
         self.assertEqual(saved_phrase.english, "I have a question")
+
 
 class PlayerRecordTest(TestCase):
 
@@ -101,7 +100,7 @@ class PlayerRecordTest(TestCase):
         phrase.url = "http://www.stackoverflow.com"
         phrase.english = "I have a question"
         phrase.korean = "질문이 있어요"
-        phrase.set_ = qna_set
+        phrase.set = qna_set
         phrase.save()
 
         player_record = PlayerRecord()

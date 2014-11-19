@@ -1,56 +1,56 @@
+{% load static %}
 <html>
 <head>
-  <title>Writing Sandbox</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<!-- Latest compiled and minified CSS 
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">-->
-	<!-- Optional theme
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css"> -->
-	<link rel="stylesheet" href="bootstrap.css">
-	<link rel="stylesheet" href="bootstrap-theme.css">
-	<!-- Writing Sandbox style -->
-	<link rel="stylesheet" href="style.css">
-	
+<title>Writing Sandbox</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Latest compiled and minified CSS 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">-->
+<!-- Optional theme
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css"> -->
+<link rel="stylesheet" href="{% static "quiz/bootstrap.css" %}">
+<link rel="stylesheet" href="{% static "quiz/bootstrap-theme.css" %}">
+<!-- Writing Sandbox style -->
+<link rel="stylesheet" href="{% static "quiz/style.css" %}">
 </head>
 <body>
-  <!-- Navbar -->
-  <div class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand text-muted" href="#">Writing Sandbox</a>  
-      <div class="collapse navbar-collapse">
-        <ul class="nav navbar-nav navbar-right">
-          <li class="active"><a href="#">Home</a></li>
-          <li><a href="#">About Writing Sandbox</a>   </li>
-        </ul>
-      </div>
+<!-- Navbar -->
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand text-muted" href="/">Writing Sandbox</a>  
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">About Writing Sandbox</a>   </li>
+      </ul>
     </div>
   </div>
-  <!-- End Navbar -->
-  <div class="jumbotron">
-    <h2 class="title">
-		<span>Home</span>
-		<p>Welcome to Writing sandbox</p> 
-	</h2>    
-   <div class="conbox">
-	   <table id="id_list_table" class="table">
-			{% for set in sets %}
-				<tr>
-					<td><p><a class="btn" href="/sets/{{ set.name }}/learn">{{ forloop.counter }}: {{ set.name }}</a><p></td>
-				</tr>
-			{% endfor %}
-		</table>
-	</div> 
-  </div>
-  <div class="footer">
-    <p>&copy; 2014 Writing Sandbox. By Hosung and Nasol</p>  
+</div>
+<!-- End Navbar -->
+<div class="jumbotron">
+  <h2 class="title">
+    <span>Home</span>
+    <p>Welcome to Writing sandbox</p> 
+  </h2>    
+  <div class="conbox">
+    <table id="id_list_table" class="table">
+      {% for set in sets %}
+      <tr>
+        <td><p><a class="btn" href="/sets/{{ set.name }}/learn">{{ forloop.counter }}: {{ set.name }}</a><p></td>
+      </tr>
+      {% endfor %}
+    </table>
   </div> 
+</div>
+<div class="footer">
+  <p>&copy; 2014 Writing Sandbox. By Hosung and Nasol</p>  
+</div> 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <!-- Latest compiled and minified JavaScript -->
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 </body>
 </html>
