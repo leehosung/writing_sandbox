@@ -1,8 +1,11 @@
 /*
 <link href='http://fonts.googleapis.com/css?family=Play:400,700' rel='stylesheet' type='text/css'>
 */
-
-
+@media (min-width: 1024px) {
+	body{background-color:#e3e3e1;}
+	.wrap{width:900px; margin:0 auto ; }
+	.container{width:900px; margin:0 auto ;}
+}
 .title{
 	margin:0 0;
 	

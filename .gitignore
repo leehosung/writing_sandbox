@@ -62,3 +62,6 @@ local_settings.py
 
 # Selenium
 chromedriver
+
+# Editplus
+*.bak

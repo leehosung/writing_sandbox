@@ -13,57 +13,60 @@
 <link rel="stylesheet" href="{% static "quiz/style.css" %}">
 </head>
 <body>
-<!-- Navbar -->
-<div class="navbar navbar-inverse navbar-fixed-top">
-  <div class=container>
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-    <a class="navbar-brand text-muted" href="/">Writing Sandbox</a>  
-    <div class="collapse navbar-collapse">
-      <ul class="nav navbar-nav navbar-right">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">About Writing Sandbox</a>   </li>
-      </ul>
-    </div>
-  </div>
+<div class="wrap">
+	<!-- Navbar -->
+	<div class="navbar navbar-inverse navbar-fixed-top">
+	  <div class="container">
+		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		  <span class="icon-bar"></span>
+		  <span class="icon-bar"></span>
+		</button>
+		<a class="navbar-brand text-muted" href="/">Writing Sandbox</a>  
+		<div class="collapse navbar-collapse">
+		  <ul class="nav navbar-nav navbar-right">
+			<li class="active"><a href="#">Home</a></li>
+			<li><a href="#">About Writing Sandbox</a>   </li>
+		  </ul>
+		</div>
+	  </div>
+	</div>
+	<!-- End Navbar -->
+	<div class="jumbotron">
+	  <h2 class="title">
+		<span>Learn</span>
+		<p>{{ set }}</p> 
+	  </h2>
+	  <div class="conbox">
+		  <div id="input_div">
+			<p id="text_quiz">{{ quiz }}</p>
+			<form id="input_form">
+			  <div class="form-group">
+				<input id="input_text_english"  type="text" name="user_text" class="form-control"/>
+			  </div>
+			</form>
+		  </div>
+		  <div id="confirm_div">
+			<form id="post_form" method="POST">
+			  <div class="form-group">
+				<p>Prompt : {{ quiz }}</p>
+				<p id="text_you_said"></p>
+				<p id="text_correct">Correct : {{ answer }}</p>
+				<input id="q_idx" name="q_idx" type="hidden" value="{{ q_idx }}">
+				{% if has_next_phrase %}
+				<input id="btn_next" name="btn_next" type="submit" class="btn btn-success btn-lg" value="Next" href="/">
+				{% else %}
+				<button id="btn_home" name="btn_home" on" class="btn btn-default btn-lg"><a href="/">Go to home</a></button>
+				{% endif %}
+			  </div>
+			  {% csrf_token %}
+			</form>
+		  </div>
+		</div>
+	</div>
+	<div class="footer">
+	  <p>&copy; 2014 Writing Sandbox. By Ho sung and Nasol</p>  
+	</div> 
 </div>
-<!-- End Navbar -->
-<div class="jumbotron">
-  <h2 class="title">
-    <span>Learn</span>
-    <p>{{ set }}</p> 
-  </h2>
-  <div id="input_div">
-    <p id="text_quiz">{{ quiz }}</p>
-    <form id="input_form">
-      <div class="form-group">
-        <input id="input_text_english"  type="text" name="user_text" class="form-control"/>
-      </div>
-    </form>
-  </div>
-  <div id="confirm_div">
-    <form id="post_form" method="POST">
-      <div class="form-group">
-        <p>Prompt : {{ quiz }}</p>
-        <p id="text_you_said"></p>
-        <p id="text_correct">Correct : {{ answer }}</p>
-        <input id="q_idx" name="q_idx" type="hidden" value="{{ q_idx }}">
-        {% if has_next_phrase %}
-        <input id="btn_next" name="btn_next" type="submit" class="btn btn-success btn-lg" value="Next" href="/">
-        {% else %}
-        <button id="btn_home" name="btn_home" on" class="btn btn-default btn-lg"><a href="/">Go to home</a></button>
-        {% endif %}
-      </div>
-      {% csrf_token %}
-    </form>
-  </div>
-</div>
-<hr>
-<div>
-  <p>&copy; 2014 Writing Sandbox. By Ho sung and Nasol</p>  
-</div> 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <!-- Latest compiled and minified JavaScript -->
