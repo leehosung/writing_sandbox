@@ -37,11 +37,12 @@
 		<span>Home</span>
 		<p>Welcome to Writing sandbox</p> 
 	  </h2>    
-	  <div class="conbox">
+	  <div class="panel panel-default">
+            <div class="panel-heading">Sets</div>
 		<table id="id_list_table" class="table">
 		  {% for set in sets %}
 		  <tr>
-			<td><p><a class="btn" href="/sets/{{ set.name }}/learn">{{ forloop.counter }}: {{ set.name }}</a><p></td>
+			<td><a class="btn" href="/sets/{{ set.name }}/learn">{{ forloop.counter }}: {{ set.name }}</a></td>
 		  </tr>
 		  {% endfor %}
 		</table>
