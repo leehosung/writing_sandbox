@@ -52,7 +52,7 @@ class NewVisitorTest(LiveServerTestCase):
         # He logs into the service.
 
         # He chooses the QnA set to practice
-        qna_button = self.browser.find_element_by_link_text("1: QnA")
+        qna_button = self.browser.find_element_by_link_text("QnA")
         qna_button.click()
 
         # He sees a sentence in Korean
@@ -93,14 +93,14 @@ class NewVisitorTest(LiveServerTestCase):
 
         # This is the last question. He can not see the next button
         # He can see the "Go to home" button to select an another set
-        home_button = self.browser.find_element_by_link_text('Go to home')
+        home_button = self.browser.find_element_by_link_text('Go to Home')
         home_button.click()
 
         # TODO: remove below line
         return
 
         # He select the 'Issue' set to learn it
-        issue_button = self.browser.find_element_by_link_text("2: Issue")
+        issue_button = self.browser.find_element_by_link_text("Issue")
         issue_button.click()
 
         # He sees the sentence in Korean
