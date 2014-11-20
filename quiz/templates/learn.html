@@ -41,21 +41,24 @@
 			<p id="text_quiz">{{ quiz }}</p>
 			<form id="input_form">
 			  <div class="form-group">
-				<input id="input_text_english"  type="text" name="user_text" class="form-control"/>
+				<input id="input_text_english"  type="text" name="user_text" class="form-control input-lg"/>
 			  </div>
 			</form>
 		  </div>
 		  <div id="confirm_div">
+          <ul class="list-group">
+              <li class="list-group-item">
+              <h3><span class="label label-primary">Quiz</span>      {{ quiz }}</h3></li>
+				<li class="list-group-item" id="text_you_said"></li>
+				<li class="list-group-item" id="text_correct">Correct : {{ answer }}</li>
+          </ul>
 			<form id="post_form" method="POST">
 			  <div class="form-group">
-				<p>Prompt : {{ quiz }}</p>
-				<p id="text_you_said"></p>
-				<p id="text_correct">Correct : {{ answer }}</p>
 				<input id="q_idx" name="q_idx" type="hidden" value="{{ q_idx }}">
 				{% if has_next_phrase %}
 				<input id="btn_next" name="btn_next" type="submit" class="btn btn-success btn-lg" value="Next" href="/">
 				{% else %}
-				<button id="btn_home" name="btn_home" on" class="btn btn-default btn-lg"><a href="/">Go to home</a></button>
+				<button id="btn_home" name="btn_home" class="btn btn-success btn-lg" href="/">Go to Home</button>
 				{% endif %}
 			  </div>
 			  {% csrf_token %}

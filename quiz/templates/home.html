@@ -37,15 +37,10 @@
 		<span>Home</span>
 		<p>Welcome to Writing sandbox</p> 
 	  </h2>    
-	  <div class="panel panel-default">
-            <div class="panel-heading">Sets</div>
-		<table id="id_list_table" class="table">
+	  <div class="list-group">
 		  {% for set in sets %}
-		  <tr>
-			<td><a class="btn" href="/sets/{{ set.name }}/learn">{{ forloop.counter }}: {{ set.name }}</a></td>
-		  </tr>
+			<a class="list-group-item" href="/sets/{{ set.name }}/learn">{{ forloop.counter }}: {{ set.name }}</a>
 		  {% endfor %}
-		</table>
 	  </div> 
 	</div>
 	<div class="footer">
