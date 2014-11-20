@@ -900,7 +900,7 @@ html {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: NanumGothic, 나눔고딕, "Malgun Gothic", "맑은 고딕", sans-serif;
   font-size: 14px;
   line-height: 1.42857143;
   color: #333;
@@ -5595,7 +5595,7 @@ button.close {
   position: absolute;
   z-index: 1070;
   display: block;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: NanumGothic, 나눔고딕, "Malgun Gothic", "맑은 고딕", sans-serif;
   font-size: 12px;
   font-weight: normal;
   line-height: 1.4;
@@ -5703,7 +5703,7 @@ button.close {
   display: none;
   max-width: 276px;
   padding: 1px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: NanumGothic, 나눔고딕, "Malgun Gothic", "맑은 고딕", sans-serif;
   font-size: 14px;
   font-weight: normal;
   line-height: 1.42857143;
