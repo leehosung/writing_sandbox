@@ -39,7 +39,9 @@
 	  </h2>    
 	  <div class="list-group">
 		  {% for set in sets %}
-			<a class="list-group-item" href="/sets/{{ set.name }}/learn">{{ forloop.counter }}: {{ set.name }}</a>
+			<a class="list-group-item" href="/sets/{{ set.name }}/learn">{{ set.name }}
+                            <!-- <span class="badge">1</span> -->
+                        </a>
 		  {% endfor %}
 	  </div> 
 	</div>
