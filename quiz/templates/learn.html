@@ -14,61 +14,66 @@
 </head>
 <body>
 <div class="wrap">
-	<!-- Navbar -->
-	<div class="navbar navbar-inverse navbar-fixed-top">
-	  <div class="container">
-		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-		  <span class="icon-bar"></span>
-		  <span class="icon-bar"></span>
-		</button>
-		<a class="navbar-brand text-muted" href="/">Writing Sandbox</a>  
-		<div class="collapse navbar-collapse">
-		  <ul class="nav navbar-nav navbar-right">
-			<li class="active"><a href="#">Home</a></li>
-			<li><a href="#">About Writing Sandbox</a>   </li>
-		  </ul>
-		</div>
-	  </div>
-	</div>
-	<!-- End Navbar -->
-	<div class="jumbotron">
-	  <h2 class="title">
-		<span>Learn</span>
-		<p>{{ set }}</p> 
-	  </h2>
-	  <div class="conbox">
-		  <div id="input_div">
-			<p id="text_quiz">{{ quiz }}</p>
-			<form id="input_form">
-			  <div class="form-group">
-				<input id="input_text_english"  type="text" name="user_text" class="form-control input-lg"/>
-			  </div>
-			</form>
-		  </div>
-		  <div id="confirm_div">
-          <ul class="list-group">
-              <li class="list-group-item">
-              <h3><span class="label label-primary">Quiz</span>      {{ quiz }}</h3></li>
-				<li class="list-group-item" id="text_you_said"></li>
-				<li class="list-group-item" id="text_correct">Correct : {{ answer }}</li>
-          </ul>
-			<form id="post_form" method="POST">
-			  <div class="form-group">
-				<input id="q_idx" name="q_idx" type="hidden" value="{{ q_idx }}">
-				{% if has_next_phrase %}
-				<input id="btn_next" name="btn_next" type="submit" class="btn btn-success btn-lg" value="Next" href="/">
-				{% else %}
-				<button id="btn_home" name="btn_home" class="btn btn-success btn-lg" href="/">Go to Home</button>
-				{% endif %}
-			  </div>
-			  {% csrf_token %}
-			</form>
-		  </div>
-		</div>
-	</div>
-	<div class="footer">
-	  <p>&copy; 2014 Writing Sandbox. By Ho sung and Nasol</p>  
-	</div> 
+    <!-- Navbar -->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand text-muted" href="/">Writing Sandbox</a>  
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#">About Writing Sandbox</a>   </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- End Navbar -->
+    <div class="jumbotron">
+        <h2 class="title">
+            <span>Learn</span>
+            <p>{{ set }}</p> 
+        </h2>
+        <div class="conbox">
+            <div id="input_div">
+                <p id="text_quiz">{{ quiz }}</p>
+                <form id="input_form">
+                    <div class="form-group">
+                        <input id="input_text_english" rows="3" name="user_text" class="form-control input-lg" placeholder="Enter sentence in English" autofocus/>
+                    </div>
+                </form>
+            </div>
+            <div id="confirm_div">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                    <h3><span class="label label-primary">Quiz</span>      {{ quiz }}</h3>
+                    </li>
+                    <li class="list-group-item">
+                    <h3><span class="label label-primary">You Said</span>      <span id="text_you_said"></span></h3>
+                    </li>
+                    <li class="list-group-item">
+                    <h3><span class="label label-primary">Correct</span>      {{ answer }}</h3>
+                    </li>
+                </ul>
+                <form id="post_form" method="POST">
+                    <div class="form-group">
+                        <input id="q_idx" name="q_idx" type="hidden" value="{{ q_idx }}">
+                        {% if has_next_phrase %}
+                        <input id="btn_next" name="btn_next" type="submit" class="btn btn-success btn-lg" value="Next" href="/">
+                        {% else %}
+                        <a class="btn btn-success btn-lg" href="/">Go to Home</a>
+                        {% endif %}
+                    </div>
+                    {% csrf_token %}
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <p>&copy; 2014 Writing Sandbox. By Ho sung and Nasol</p>  
+    </div> 
 </div>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -76,15 +81,15 @@
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script>
 $(function() {
-    $("#input_div").show();
-    $("#confirm_div").hide();
-    });
+        $("#input_div").show();
+        $("#confirm_div").hide();
+        });
 $("#input_form").submit(function(e) {
-    e.preventDefault();
-    $("#input_div").hide();
-    $("#confirm_div").show();
-    $("#text_you_said").text("You said : " + $("#input_text_english").val());
-    });
+        e.preventDefault();
+        $("#input_div").hide();
+        $("#confirm_div").show();
+        $("#text_you_said").text($("#input_text_english").val());
+        });
 </script>
 </body>
 </html>
