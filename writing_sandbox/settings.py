@@ -92,10 +92,4 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
-# Sentry
-# Set your DSN value
-SENTRY_ID = '037240776a414879963a39ee53d654da'
-SENTRY_PW = '9ce108552e164487987f89da0a5800e2'
-RAVEN_CONFIG = {
-    'dsn': 'https://%s:%s@app.getsentry.com/33337' % (SENTRY_ID, SENTRY_PW)
-    }
+from writing_sandbox.local_settings import *
