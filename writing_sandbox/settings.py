@@ -92,4 +92,7 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
-from writing_sandbox.local_settings import *
+try:
+    from local_settings import *
+except ImportError:
+    pass
