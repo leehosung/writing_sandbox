@@ -13,6 +13,7 @@ class Phrase(models.Model):
     english = models.TextField(default='')
     korean = models.TextField(default='')
     set = models.ForeignKey(Set)
+    difficulty = models.PositiveSmallIntegerField(default=32767)
 
 
 class PlayerRecord(models.Model):
