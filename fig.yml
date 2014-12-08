@@ -1,0 +1,7 @@
+web:
+    build: .
+    command: bash ./.run.fig.sh
+    volumes:
+        - .:/usr/src/app
+    ports:
+        - "8000:8000"
