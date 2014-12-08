@@ -9,6 +9,7 @@ class Set(models.Model):
 
 
 class Phrase(models.Model):
+    title = models.TextField(default='')
     url = models.TextField(default='')
     english = models.TextField(default='')
     korean = models.TextField(default='')
