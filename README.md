@@ -1,6 +1,8 @@
 # Writing Sandbox
 =================
 
+[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/leehosung/writing_sandbox?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 ## About the Program
 
 "Writing Sandbox" is a website/extension where users can practice writing in English. It is mainly for Korean programmers since it provides sample sentences of programming related topics. 
