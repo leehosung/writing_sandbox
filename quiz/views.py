@@ -30,7 +30,8 @@ def learn_page(request, set_name):
     has_next_phrase = False if len(next_phrase) == 0 else True
 
     response = render(request, 'learn.html', {
-        'set': set_,
+        'set_name': set_.name,
+        'set_description': set_.description,
         'quiz': phrase.korean,
         'answer': phrase.english,
         'q_idx': phrase.id,

@@ -3,6 +3,7 @@ from django.db import models
 
 class Set(models.Model):
     name = models.TextField(default='')
+    description = models.TextField(default='')
 
     def __str__(self):
         return self.name

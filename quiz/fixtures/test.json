@@ -3,14 +3,16 @@
   "pk": 1,
   "model": "quiz.set",
   "fields": {
-    "name": "QnA"
+    "name": "QnA",
+    "description": "스택오버플로우에서 활동하려면, 영어로 질문하고 답변할 수 있어야겠죠?"
   }
 },
 {
   "pk": 2,
   "model": "quiz.set",
   "fields": {
-    "name": "Issue"
+    "name": "Issue",
+    "description": "유저 사용 흐름, 버그를 신고하는 내용 등을 영어로 써봅니다."
   }
 },
 {

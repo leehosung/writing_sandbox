@@ -66,6 +66,16 @@ class LearnPageTest(TestCase):
         )
         self.assertContains(response, "What is the command?")
 
+    def test_learn_page_can_show_set_description(self):
+        response = self.client.post(
+            '/sets/QnA/learn',
+            data={
+                'q_idx': 1,
+                'user_text': 'I have question'
+            }
+        )
+        self.assertContains(response, "스택오버플로우에서 활동하려면, 영어로 질문하고 답변할 수 있어야겠죠?")
+
 
 class PhraseModelTest(TestCase):
 
@@ -121,6 +131,7 @@ class SetTest(TestCase):
     def test_saving_and_retreiving_set(self):
         set_ = Set()
         set_.name = "QnA"
+        set_.description = "스택오버플로우에서 활동"
         set_.save()
 
         saved_sets = Set.objects.all()
@@ -128,3 +139,4 @@ class SetTest(TestCase):
 
         saved_set = saved_sets[0]
         self.assertEqual(saved_set.name, "QnA")
+        self.assertEqual(saved_set.description, "스택오버플로우에서 활동")
