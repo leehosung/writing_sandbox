@@ -97,9 +97,11 @@ class NewVisitorTest(LiveServerTestCase):
         home_button.click()
 
         # User can send a feedback
-        send_feedback_button = self.browser.find_element_by_link_text('Send Feedback')
+        send_feedback_button = \
+            self.browser.find_element_by_link_text('Send Feedback')
         send_feedback_button.click()
-        self.assertIn('Any ideas to improve Writing-Sandbox?', self.browser.title)
+        self.assertIn('Any ideas to improve Writing-Sandbox?',
+                      self.browser.title)
         self.browser.back()
 
         # TODO: remove below line
