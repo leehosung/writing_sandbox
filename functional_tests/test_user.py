@@ -55,6 +55,10 @@ class NewVisitorTest(LiveServerTestCase):
         qna_button = self.browser.find_element_by_link_text("QnA")
         qna_button.click()
 
+        # He can see a description for the "QnA" set.
+        header_text = self.browser.find_element_by_tag_name('h2').text
+        self.assertIn('스택오버플로우에서 활동하려면, 영어로 질문하고 답변할 수 있어야겠죠?', header_text)
+
         # He sees a sentence in Korean
         quiz = self.browser.find_element_by_id('text_quiz').text
         self.assertIn("질문이 있어요", quiz)
@@ -95,6 +99,14 @@ class NewVisitorTest(LiveServerTestCase):
         # He can see the "Go to home" button to select an another set
         home_button = self.browser.find_element_by_link_text('Go to Home')
         home_button.click()
+
+        # User can send a feedback
+        send_feedback_button = \
+            self.browser.find_element_by_link_text('Send Feedback')
+        send_feedback_button.click()
+        self.assertIn('Any ideas to improve Writing-Sandbox?',
+                      self.browser.title)
+        self.browser.back()
 
         # TODO: remove below line
         return
