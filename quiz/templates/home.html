@@ -36,13 +36,17 @@
 	<div class="jumbotron">
 	  <h2 class="title">
 		<span>Home</span>
-		<p>Welcome to Writing sandbox</p> 
+		<p>이곳은 개발자에게 필요한 표현들을 영어로 연습하는 곳입니다. 아래 카테고리 중 하나를 선택 해 주세요.</p>
 	  </h2>    
+      <h4>카테고리 선택하기</h4>
 	  <div class="list-group">
 		  {% for set in sets %}
-			<a class="list-group-item" href="/sets/{{ set.name }}/learn">{{ set.name }}
-                            <!-- <span class="badge">1</span> -->
-                        </a>
+			<a class="list-group-item" href="/sets/{{ set.name }}/learn">
+          <h4 class="list-group-item-text">
+              {{ set.name }}
+               <!-- <span class="badge">1</span> -->
+          </h4>
+            </a>
 		  {% endfor %}
 	  </div> 
 	</div>

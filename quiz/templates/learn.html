@@ -42,22 +42,25 @@
                 <p id="text_quiz">{{ quiz }}</p>
                 <form id="input_form">
                     <div class="form-group">
-                        <input id="input_text_english" rows="3" name="user_text" class="form-control input-lg" placeholder="Enter sentence in English" autofocus/>
+                        <input id="input_text_english" rows="3" name="user_text" class="form-control input-lg" placeholder="위 내용을 이곳에 영어로 써보세요. 정확하지 않아도 좋습니다. 쓰시고 엔터를 눌러 주세요." autofocus/>
                     </div>
                 </form>
             </div>
             <div id="confirm_div">
+                <h4>어떻게 쓰면 좋을지 궁금하셨죠?</h4>
                 <ul class="list-group">
                     <li class="list-group-item">
-                    <h3><span class="label label-primary">Quiz</span>      {{ quiz }}</h3>
+                    <h4><span class="label label-primary">What you meant</span>      {{ quiz }}</h4>
                     </li>
                     <li class="list-group-item">
-                    <h3><span class="label label-primary">You Said</span>      <span id="text_you_said"></span></h3>
+                    <h4><span class="label label-primary">What you wrote</span>      <span id="text_you_said"></span></h4>
                     </li>
                     <li class="list-group-item">
-                    <h3><span class="label label-primary">Correct</span>      <span id="text_correct">{{ answer }}</span></h3>
+                    <h4><span class="label label-primary">Waht we suggest</span>      <span id="text_correct">{{ answer }}</span></h4>
                     </li>
                 </ul>
+                <h4>제안하는 문장이 유일한 답은 아닙니다. :) </h4>
+                <h4>내가 쓴 문장과 다르다고 좌절/분노 금지! 다음 문장을 연습하시려면 Next 클릭!</h4>
                 <form id="post_form" method="POST">
                     <div class="form-group">
                         <input id="q_idx" name="q_idx" type="hidden" value="{{ q_idx }}">
