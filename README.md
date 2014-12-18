@@ -31,14 +31,8 @@ There are two kinds of users: user and admin.
 - He types in a pair of English and Korean sentences, with its source URL, where he's found them.
 - He can order the registered sentences in a different way. Basic principle is that easy ones come first.
 
-
 ## How to contribute
 
 ### As a programmer
 
- 
-
-
-
-
-
+Please read our [contirubution guidelines](https://github.com/leehosung/writing_sandbox/blob/develop/Contributing.md)
