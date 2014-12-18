@@ -36,3 +36,17 @@ There are two kinds of users: user and admin.
 ### As a programmer
 
 Please read our [contriubution guidelines](https://github.com/leehosung/writing_sandbox/blob/develop/Contributing.md)
+
+## Where we communicate
+
+### Facebook Group
+
+When an issue needs various opinions from many people, the issue will be shared to the Facebook group. https://www.facebook.com/groups/engfordev/
+
+### Real-time communication
+Real-time communication will use a Gitter chat room. 
+[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/leehosung/writing_sandbox?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+
+### On-/offline meeting - webinar/ TOZ
+Admins will organize necessary meetings either online or offline. 
+
