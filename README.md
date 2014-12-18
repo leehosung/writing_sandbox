@@ -35,4 +35,4 @@ There are two kinds of users: user and admin.
 
 ### As a programmer
 
-Please read our [contirubution guidelines](https://github.com/leehosung/writing_sandbox/blob/develop/Contributing.md)
+Please read our [contriubution guidelines](https://github.com/leehosung/writing_sandbox/blob/develop/Contributing.md)
