@@ -20,7 +20,7 @@ implement a new feature then consider what kind of change it is:
 
 To ensure consistency throughout the source code, keep these rules in mind as you are working:
 
-* All features or bug fixes must be tested by one more functional or unit tests.
+* All features or bug fixes must be tested by one or more functional or unit tests.
 * We follow [PEP8](https://www.python.org/dev/peps/pep-0008/)
 
 ## Required libraries and tools
