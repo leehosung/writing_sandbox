@@ -1,6 +1,6 @@
 # Writing Sandbox
 =================
-[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/leehosung/writing_sandbox?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/leehosung/writing_sandbox?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge) [![Build Status](https://travis-ci.org/leehosung/writing_sandbox.svg?branch=develop)](https://travis-ci.org/leehosung/writing_sandbox)
 
 ## About the Program
 
