@@ -39,6 +39,10 @@ Please read our [contriubution guidelines](https://github.com/leehosung/writing_
 
 ## Where we communicate
 
+### Github Issues board
+
+The discussions will occure mainly in the [Github issue board](https://github.com/leehosung/writing_sandbox/issues).
+
 ### Facebook Group
 
 When an issue needs various opinions from many people, the issue will be shared to the Facebook group. https://www.facebook.com/groups/engfordev/
