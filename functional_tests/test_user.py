@@ -49,6 +49,14 @@ class NewVisitorTest(LiveServerTestCase):
         header_text = self.browser.find_element_by_tag_name('h2').text
         self.assertIn('Home', header_text)
 
+        # He notices the linkt to the relevant page
+        # in the footer of the front page
+        relevant_link = \
+            self.browser.find_element_by_link_text('개발자영어')
+        relevant_link.click()
+        self.assertIn('Writing-Sandbox', self.browser.title)
+        self.browser.back()
+
         # He logs into the service.
 
         # He chooses the QnA set to practice
