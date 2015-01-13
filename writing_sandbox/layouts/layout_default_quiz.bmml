@@ -1,0 +1,55 @@
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="1206" measuredH="452" mockupW="1088" mockupH="446">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="118" y="6" w="1088" h="446" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>15658734</color>
+        <text>A%20Web%20Page%0Ahttp%3A//writing-sandbox.com</text>
+      </controlProperties>
+    </control>
+    <control controlID="2" controlTypeID="com.balsamiq.mockups::Paragraph" x="653" y="131" w="529" h="270" measuredW="275" measuredH="80" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>%uC800%uB294%20%uAC04%uB2E8%uD55C%20%uC554%uD638%20%uC7AC%uC124%uC815%20%uD3FC%uC774%20%uC788%uC2B5%uB2C8%uB2E4%20%uADF8%uACF3%uC5D0%uC11C%20%uC0AC%uC6A9%uC790%uC758%20%uC774%uBA54%uC77C%uC744%20%uC785%uB825%uC73C%uB85C%20%uBC1B%uC2B5%uB2C8%uB2E4.%0A%uAD00%uB828%uC788%uB294%20%uD074%uB798%uC2A4%uB294%20%uC544%uB798%uC640%20%uAC19%uC2B5%uB2C8%uB2E4.%0A%uCF54%uB4DC%uAC00%20%uC81C%20%uB85C%uCEEC%20%uCEF4%uD4E8%uD130%uC5D0%uC11C%uB294%20%uC798%20%uC791%uB3D9%uD558%uB294%uB370%2C%20%uB3D9%uC77C%uD55C%20%uCF54%uB4DC%uAC00%20%uD504%uB85C%uB355%uC158%20%uC11C%uBC84%uC5D0%uC11C%uB294%20%uC791%uB3D9%uD558%uC9C0%20%uC54A%uC2B5%uB2C8%uB2E4.%0A%uB80C%uB354%uB41C%20%uBDF0%uC758%20%uC18C%uC2A4%uB97C%20%uD655%uC778%uD574%uBCF4%uBA74%2C%20%uAC12%20%uD544%uB4DC%uAC00%20%uC5C6%uC2B5%uB2C8%uB2E4.%0A%uAE30%uB300%uB418%uB294%20%uCD9C%uB825%uC740%20%uC544%uB798%uC640%20%uAC19%uC2B5%uB2C8%uB2E4%3A%0A%uAC1C%uBC1C%20%uC11C%uBC84%uC5D0%uC11C%uB294%2C%20%uC774%uBA54%uC77C%20%uD544%uB4DC%uC5D0%20%uB300%uD55C%20%uAC12%uC774%20%uC5C6%uC2B5%uB2C8%uB2E4.%0A%uC774%uAC8C%20%uC65C%20%uC774%uB7F0%20%uAC74%uC9C0%20%uC804%uD600%20%uBAA8%uB974%uACA0%uC2B5%uB2C8%uB2E4.%0A%uC870%uC5B8%20%uC8FC%uC2DC%uBA74%20%uAC10%uC0AC%uD558%uACA0%uC2B5%uB2C8%uB2E4.%0A%uC800%uB294%20%uBCA0%uC774%uC2A4%20%uD15C%uD50C%uB9BF%uC744%20%uD558%uB098%20%uC0AC%uC6A9%uD558%uBA70%2C%20%uADF8%20%uC548%uC5D0%20%3Cdiv%20class%3D%22container%22%3E%uAC00%20%uC788%uC2B5%uB2C8%uB2E4.%0A%uC800%uB294%20%uC774%20%uBCA0%uC774%uC2A4%20%uD15C%uD50C%uB9BF%uC744%20%uB2E4%uB978%20%uD15C%uD50C%uB9BF%uC744%20%uBE4C%uB4DC%uD558%uB294%uB370%20%uC0AC%uC6A9%uD558%uBA70%2C%20%uBAA8%uB4E0%20%uB370%uC774%uD130%uB97C%20%uADF8%20%uCEE8%uD14C%uC774%uB108%20%uC548%uC5D0%uC11C%20%uBCF4%uC5EC%uC90D%uB2C8%uB2E4.%0A%uC81C%20%uBB38%uC81C%uB294%20%uC774%20%uCEE8%uD14C%uC774%uB108%uAC00%20%uC6F9%uD398%uC774%uC9C0%20%uC0C1%uC5D0%uC11C%20%uACE0%uC815%uB41C%20%uC7A5%uC18C%uB97C%20%uAC16%uC9C0%20%uC54A%uB294%uB2E4%uB294%20%uAC83%uC785%uB2C8%uB2E4.%0A%uC5B4%uB5A4%20%uB54C%uB294%20%uADF8%uAC83%uC774%20%uAC00%uC6B4%uB370%uC5D0%20%uC788%uACE0%2C%20%uC5B4%uB5A4%20%uB54C%uC5D0%uB294%20%uC67C%uCABD%uC73C%uB85C%20%22%uC6C0%uC9C1%uC774%uACE0%22%20%uC788%uC2B5%uB2C8%uB2E4.%0A%uC774%20%uBB38%uC81C%uB97C%20%uD574%uACB0%uD558%uB294%20%uBC95%2C%20%uC54C%uACE0%20%uC788%uB294%20%uBD84%20%uACC4%uC2E0%uAC00%uC694%3F</text>
+      </controlProperties>
+    </control>
+    <control controlID="3" controlTypeID="com.balsamiq.mockups::Label" x="207" y="125" w="420" h="-1" measuredW="210" measuredH="21" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>%uAD00%uB828%uC788%uB294%20%uD074%uB798%uC2A4%uB294%20%uC544%uB798%uC640%20%uAC19%uC2B5%uB2C8%uB2E4.</text>
+      </controlProperties>
+    </control>
+    <control controlID="4" controlTypeID="com.balsamiq.mockups::TextInput" x="207" y="152" w="302" h="-1" measuredW="102" measuredH="27" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>The%20relevant%20....</text>
+      </controlProperties>
+    </control>
+    <control controlID="5" controlTypeID="com.balsamiq.mockups::Button" x="524" y="152" w="71" h="27" measuredW="50" measuredH="27" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Next</text>
+      </controlProperties>
+    </control>
+    <control controlID="6" controlTypeID="com.balsamiq.mockups::TextArea" x="207" y="255" w="388" h="96" measuredW="200" measuredH="140" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>%uAD00%uB828%uC788%uB294%20%uC0AC%uB78C%uB4E4%20%09relevant%20%20people%0A%uC544%uB798%uC640%20%uAC19%uC740%20%09%09as%20below</text>
+      </controlProperties>
+    </control>
+    <control controlID="7" controlTypeID="com.balsamiq.mockups::Label" x="207" y="99" w="420" h="-1" measuredW="319" measuredH="21" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>%uB2E4%uC74C%uC744%20%uC601%uC5B4%uB85C%20%uC368%uBCF4%uC138%uC694.%20%uB2E4%20%uC4F4%20%uD6C4%uC5D0%uB294%20%uC5D4%uD130%uB97C%20%uB204%uB974%uC138%uC694.</text>
+      </controlProperties>
+    </control>
+    <control controlID="8" controlTypeID="com.balsamiq.mockups::Label" x="207" y="194" w="388" h="-1" measuredW="179" measuredH="21" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>The%20relevant%20class%20is%20as%20below.</text>
+      </controlProperties>
+    </control>
+    <control controlID="9" controlTypeID="com.balsamiq.mockups::Label" x="653" y="99" w="-1" h="-1" measuredW="256" measuredH="21" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Django%20form%20does%20not%20render%20the%20email%20field</text>
+      </controlProperties>
+    </control>
+    <control controlID="10" controlTypeID="com.balsamiq.mockups::Label" x="207" y="234" w="48" h="-1" measuredW="29" measuredH="21" zOrder="9" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>%uD78C%uD2B8%3A</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>
