@@ -1,6 +1,12 @@
 from django.db import models
 
 
+class Article(models.Model):
+    url = models.TextField(default='')
+    title = models.TextField(default='')
+    tags = models.TextField(default='')
+
+
 class Set(models.Model):
     name = models.TextField(default='')
     description = models.TextField(default='')
