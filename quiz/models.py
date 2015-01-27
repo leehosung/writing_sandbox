@@ -7,6 +7,13 @@ class Article(models.Model):
     tags = models.TextField(default='')
 
 
+class Sentence(models.Model):
+    article = models.ForeignKey(Article, default=None)
+    language = models.TextField(default='')
+    sentence = models.TextField(default='')
+    order = models.PositiveSmallIntegerField(default=0)
+
+
 class Set(models.Model):
     name = models.TextField(default='')
     description = models.TextField(default='')
