@@ -1,8 +1,8 @@
 # coding=utf-8
 from django.test import TestCase
-
 from quiz.models import Article
 from quiz.models import Sentence
+from quiz.models import Hint
 from quiz.models import Phrase
 from quiz.models import PlayerRecord
 from quiz.models import Set
@@ -14,6 +14,46 @@ article : id, url, title, tags
 sentence : id, article_id, language, sentence, order
 hint : id, sentence_id, hint, order
 """
+
+
+class HintModelTest(TestCase):
+
+    def test_saving_and_retreiving_hints(self):
+        article = Article()
+        article.url = "http://d0.awsstatic.com/whitepapers/AWS_DevOps.pdf"
+        article.title = "Introduction to DevOps on AWS"
+        article.tags = "AWS, DevOps"
+        article.save()
+
+        # save
+        sentence = Sentence()
+        sentence.article = article
+        sentence.language = "English"
+        sentence.sentence = "As innovation accelerates and customer needs "
+        "rapidly evolve, businesses must become increasingly agile."
+        sentence.order = 0
+        sentence.save()
+
+        # saved_sentences = Sentence.objects.all()
+        # self.assertEqual(saved_sentences.count(), 1)
+
+        # saved_sentence = saved_sentences[0]
+
+        # self.assertEqual(saved_sentence.language, "English")
+
+        hint = Hint()
+        hint.sentence = sentence
+        hint.hint = "as : because, agile : rapid and quick"
+        hint.order = 0
+        hint.save()
+
+        saved_hints = Hint.objects.all()
+        self.assertEqual(saved_hints.count(), 1)
+
+        saved_hint = saved_hints[0]
+
+        self.assertEqual(saved_hint.hint,
+                         "as : because, agile : rapid and quick")
 
 
 class SentenceModelTest(TestCase):

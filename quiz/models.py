@@ -14,6 +14,12 @@ class Sentence(models.Model):
     order = models.PositiveSmallIntegerField(default=0)
 
 
+class Hint(models.Model):
+    sentence = models.ForeignKey(Sentence, default=None)
+    hint = models.TextField(default='')
+    order = models.PositiveSmallIntegerField(default=0)
+
+
 class Set(models.Model):
     name = models.TextField(default='')
     description = models.TextField(default='')
