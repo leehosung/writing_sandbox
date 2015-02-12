@@ -1,7 +1,6 @@
 from django.db import models
 
 
-
 class User(models.Model):
     name = models.TextField(default='')
     email = models.EmailField(default='')
@@ -36,7 +35,14 @@ class Hint(models.Model):
     def __unicode__(self):
         return self.hint
 
+class QuizResult(models.Model):
+    user = models.ForeignKey(User, default=None)
+    sentence = models.ForeignKey(Sentence, default=None)
+    typed_by_user = models.TextField(default='')
+    datetime = models.DateTimeField(auto_now=True)
 
+    def __unicode__(self):
+        return self.typed_by_user
 
 ######################################
 

@@ -9,7 +9,7 @@ from quiz.models import Article
 from quiz.models import Sentence    # explicit is better than implicit!
 from quiz.models import Hint
 from quiz.models import User
-
+from quiz.models import QuizResult
 
 
 ######
@@ -38,6 +38,8 @@ class SentenceAdmin(admin.ModelAdmin):
 class HintAdmin(admin.ModelAdmin):
 	list_display = ['sentence', 'hint' ]
 
+class QuizResultAdmin(admin.ModelAdmin):
+	list_display = ['user', 'sentence', 'typed_by_user']
 
 admin.site.register(Phrase, PhraseAdmin)
 admin.site.register(PlayerRecord, PlayerRecordAdmin)
@@ -46,4 +48,4 @@ admin.site.register(Article, ArticleAdmin)  # make a link my model and the admin
 admin.site.register(Sentence, SentenceAdmin)
 admin.site.register(Hint, HintAdmin)
 admin.site.register(User, UserAdmin)
-
+admin.site.register(QuizResult, QuizResultAdmin)

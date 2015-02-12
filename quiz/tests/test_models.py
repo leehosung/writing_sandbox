@@ -4,6 +4,7 @@ from quiz.models import Article
 from quiz.models import Sentence
 from quiz.models import Hint
 from quiz.models import User
+from quiz.models import QuizResult
 
 ###
 from quiz.models import Phrase
@@ -20,10 +21,50 @@ hint : id, sentence_id, hint, order
 
 
 
-'''
+
 class QuizResultModelTest(TestCase):
     def test_saving_and_retrieving_quiz_result(self):
-'''
+
+        article = Article()
+        article.url = "http://d0.awsstatic.com/whitepapers/AWS_DevOps.pdf"
+        article.title = "Introduction to DevOps on AWS"
+        article.tags = "AWS, DevOps"
+        article.save()
+
+        sentence = Sentence()
+        sentence.article = article
+        sentence.language = "English"
+        sentence.sentence = "As innovation accelerates and customer needs "
+        "rapidly evolve, businesses must become increasingly agile."
+        sentence.order = 0
+        sentence.save()
+
+        hint = Hint()
+        hint.sentence = sentence
+        hint.hint = "as : because, agile : rapid and quick"
+        hint.order = 0
+        hint.save()
+
+        user = User()
+        user.name = 'nassol'
+        user.email = 'nasol@gmail.com'
+        user.password = '0000'
+        user.save()
+
+        quiz_result = QuizResult()
+        quiz_result.user = user
+        quiz_result.sentence = sentence
+        quiz_result.typed_by_user = "As the innovation accelerates..."
+        quiz_result.datetime = "2015-02-12"
+        quiz_result.save()
+
+        saved_quiz_results = QuizResult.objects.all()
+        self.assertEqual(saved_quiz_results.count(), 1)
+        
+        saved_quiz_results = saved_quiz_results[0]
+        self.assertEqual(saved_quiz_results.typed_by_user,
+        "As the innovation accelerates...")
+
 
 class UserModelTest(TestCase):
     def test_saving_and_retrieving_user(self):
