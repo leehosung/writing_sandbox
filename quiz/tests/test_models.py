@@ -34,12 +34,6 @@ class HintModelTest(TestCase):
         sentence.order = 0
         sentence.save()
 
-        # saved_sentences = Sentence.objects.all()
-        # self.assertEqual(saved_sentences.count(), 1)
-
-        # saved_sentence = saved_sentences[0]
-
-        # self.assertEqual(saved_sentence.language, "English")
 
         hint = Hint()
         hint.sentence = sentence
@@ -100,7 +94,7 @@ class ArticleModelTest(TestCase):
 
         self.assertEqual(saved_article.title, "Introduction to DevOps on AWS")
 
-
+"""
 class PhraseModelTest(TestCase):
 
     def test_saving_and_retreiving_phrases(self):
@@ -164,3 +158,4 @@ class SetTest(TestCase):
         saved_set = saved_sets[0]
         self.assertEqual(saved_set.name, "QnA")
         self.assertEqual(saved_set.description, "스택오버플로우에서 활동")
+"""
