@@ -3,7 +3,6 @@ from quiz.models import Phrase
 from quiz.models import PlayerRecord
 from quiz.models import Set
 
-
 from quiz.models import Article
 from quiz.models import Sentence    # explicit is better than implicit!
 from quiz.models import Hint
@@ -29,7 +28,7 @@ class SentenceAdmin(admin.ModelAdmin):
 	list_display = ['language', 'sentence']
 
 class HintAdmin(admin.ModelAdmin):
-	list_display = ['sentence', 'hint', ]
+	list_display = ['sentence', 'hint' ]
 
 
 admin.site.register(Phrase, PhraseAdmin)

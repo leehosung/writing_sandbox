@@ -6,7 +6,7 @@ class Article(models.Model):
     title = models.TextField(default='')
     tags = models.TextField(default='')
 
-    def __str__(self):
+    def __unicode__(self):
         return self.title
 
 
