@@ -1,6 +1,15 @@
 from django.db import models
 
 
+
+class User(models.Model):
+    name = models.TextField(default='')
+    email = models.EmailField(default='')
+    password = models.TextField(default='')
+
+    def __unicode__(self):
+        return self.name
+
 class Article(models.Model):
     url = models.TextField(default='')
     title = models.TextField(default='')
@@ -8,7 +17,6 @@ class Article(models.Model):
 
     def __unicode__(self):
         return self.title
-
 
 class Sentence(models.Model):
     article = models.ForeignKey(Article, default=None)
@@ -27,6 +35,10 @@ class Hint(models.Model):
 
     def __unicode__(self):
         return self.hint
+
+
+
+######################################
 
 class Set(models.Model):
     name = models.TextField(default='')

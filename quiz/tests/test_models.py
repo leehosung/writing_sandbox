@@ -3,6 +3,9 @@ from django.test import TestCase
 from quiz.models import Article
 from quiz.models import Sentence
 from quiz.models import Hint
+from quiz.models import User
+
+###
 from quiz.models import Phrase
 from quiz.models import PlayerRecord
 from quiz.models import Set
@@ -15,6 +18,30 @@ sentence : id, article_id, language, sentence, order
 hint : id, sentence_id, hint, order
 """
 
+
+
+'''
+class QuizResultModelTest(TestCase):
+    def test_saving_and_retrieving_quiz_result(self):
+'''
+
+class UserModelTest(TestCase):
+    def test_saving_and_retrieving_user(self):
+
+        user = User()
+        user.name = "nassol"
+        user.email = "nasol.kim@gmail.com"
+        user.password = "0000"
+        user.save()
+
+        saved_users = User.objects.all()
+        self.assertEqual(saved_users.count(), 1)
+
+        saved_user = saved_users[0]
+
+        self.assertEqual(saved_user.name,"nassol")
+        self.assertEqual(saved_user.email,"nasol.kim@gmail.com")     
+        self.assertEqual(saved_user.password,"0000")
 
 class HintModelTest(TestCase):
 
@@ -78,7 +105,7 @@ class SentenceModelTest(TestCase):
 
 class ArticleModelTest(TestCase):
 
-    def test_saving_and_retreiving_phrases(self):
+    def test_saving_and_retrieving_phrases(self):
         # save
         article = Article()
         article.url = "http://d0.awsstatic.com/whitepapers/AWS_DevOps.pdf"
@@ -93,6 +120,8 @@ class ArticleModelTest(TestCase):
         saved_article = saved_articles[0]
 
         self.assertEqual(saved_article.title, "Introduction to DevOps on AWS")
+
+
 
 """
 class PhraseModelTest(TestCase):
