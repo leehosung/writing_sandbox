@@ -5,7 +5,7 @@ django-toolbelt==0.0.1
 flake==0.1.9
 flake8==2.2.5
 gspread==0.2.2
-gunicorn==19.1.1
+gunicorn==19.5.0
 mccabe==0.2.1
 pep8==1.5.7
 psycopg2==2.5.4
